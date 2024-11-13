@@ -1,3 +1,2 @@
-export function add(a: number, b: number): number {
-  return a + b;
-}
+export * as DenoContext from "./DenoContext.ts";
+export * as DenoRuntime from "./DenoRuntime.ts";

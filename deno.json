@@ -5,6 +5,7 @@
   "workspace": ["./packages/*"],
   "imports": {
     "@biomejs/biome": "npm:@biomejs/biome@^1.9.4",
+    "@effect/vitest": "npm:@effect/vitest@^0.13.14",
     "@vitest/coverage-v8": "npm:@vitest/coverage-v8@^2.1.5",
     "effect": "npm:effect@^3.10.14",
     "vitest": "npm:vitest@^2.1.5"

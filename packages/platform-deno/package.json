@@ -1,5 +1,18 @@
 {
   "name": "@lishaduck/effect-platform-deno",
   "type": "module",
-  "dependencies": {}
+  "dependencies": {
+    "@std/path": "npm:@jsr/std__path@^1.0.8"
+  },
+  "devDependencies": {
+    "effect": "npm:effect@^3.10.14",
+    "@effect/platform": "npm:@effect/platform@^0.69.21",
+    "@effect/platform-node": "npm:@effect/platform-node@^0.64.23",
+    "@effect/platform-node-shared": "npm:@effect/platform-node-shared@^0.19.22",
+    "@effect/platform-browser": "npm:@effect/platform-browser@^0.48.21"
+  },
+  "peerDependencies": {
+    "effect": "npm:effect@^3.10.14",
+    "@effect/platform": "npm:@effect/platform@^0.69.21"
+  }
 }
