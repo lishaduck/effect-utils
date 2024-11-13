@@ -13,6 +13,7 @@
   "tasks": {
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:doc": "deno test --doc packages/*/src/*.ts",
     "lint": "biome check --error-on-warnings",
     "ci": "biome ci --error-on-warnings",
     "typecheck": "deno check packages/*/src/*.ts packages/*/tests/*.ts"

@@ -54,5 +54,7 @@ jobs:
         run: deno task ci
       - name: 🕵️ Typecheck
         run: deno task typecheck
+      - name: 📖 Run documentation tests
+        run: deno task test:doc
       - name: 🧪 Run tests
         run: deno task test
