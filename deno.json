@@ -1,0 +1,28 @@
+{
+  "lock": true,
+  "nodeModulesDir": "manual",
+  "license": "MIT",
+  "workspace": ["./packages/*"],
+  "imports": {
+    "@biomejs/biome": "npm:@biomejs/biome@^1.9.4",
+    "@vitest/coverage-v8": "npm:@vitest/coverage-v8@^2.1.5",
+    "effect": "npm:effect@^3.10.14",
+    "vitest": "npm:vitest@^2.1.5"
+  },
+  "tasks": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "biome check --error-on-warnings",
+    "ci": "biome ci --error-on-warnings",
+    "typecheck": "deno check packages/*/src/*.ts packages/*/tests/*.ts"
+  },
+  "compilerOptions": {
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedIndexedAccess": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "useUnknownInCatchVariables": true
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "denoland.vscode-deno",
+    "biomejs.biome",
+    "effectful-tech.effect-vscode"
+  ]
+}
