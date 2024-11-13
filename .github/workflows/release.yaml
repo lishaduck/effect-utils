@@ -1,0 +1,47 @@
+---
+name: Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        type: string
+        description: The directory the package is located in.
+        required: true
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  CI: true
+  DENO_VERSION: v2.0.6
+
+jobs:
+  publish:
+    name: Release
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write # Needed for auth with JSR.
+
+    steps:
+      - name: 📚 Git checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          submodules: recursive
+          clean: true
+          persist-credentials: false
+          set-safe-directory: true
+      - name: 🦕 Install Deno
+        uses: denoland/setup-deno@041b854f97b325bd60e53e9dc2de9cb9f9ac0cba # v1.1.4
+        with:
+          deno-version: ${{ env.DENO_VERSION }}
+      - name: 📦 Cache dependencies
+        run: deno install --allow-scripts
+      - name: 🗞️ Publish package
+        run: deno publish
+        working-directory: packages/${{ inputs.package }}

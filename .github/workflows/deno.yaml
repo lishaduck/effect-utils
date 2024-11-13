@@ -1,0 +1,58 @@
+---
+name: Build
+# This workflow will install Deno then run `deno fmt`, `deno lint`, and `deno test`.
+# For more information see: https://github.com/denoland/setup-deno
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+  merge_group:
+  schedule:
+    - cron: "0 14 * * 1" # every monday at 9 in the morning CST
+  workflow_dispatch:
+
+permissions:
+  contents: read # Needed to clone the repository
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  CI: true
+  DENO_VERSION: v2.0.6
+
+jobs:
+  check:
+    name: CI
+    runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write # Needed for Biome comments.
+
+    steps:
+      - name: 📚 Git checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          submodules: recursive
+          clean: true
+          persist-credentials: false
+          set-safe-directory: true
+      - name: 🦕 Install Deno
+        uses: denoland/setup-deno@041b854f97b325bd60e53e9dc2de9cb9f9ac0cba # v1.1.4
+        with:
+          deno-version: ${{ env.DENO_VERSION }}
+      - name: 📦 Cache dependencies
+        run: deno install --allow-scripts
+      - name: 🕵️ Run linter & verify formatting
+        run: deno task ci
+      - name: 🕵️ Typecheck
+        run: deno task typecheck
+      - name: 🧪 Run tests
+        run: deno task test
