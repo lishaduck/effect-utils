@@ -52,15 +52,19 @@ const platformWorkerImpl = Worker.makePlatform<
  * @since 1.0.0
  * @category layers
  */
-export const layerWorker: Layer.Layer<Worker.PlatformWorker, never, never> =
-  Layer.succeed(Worker.PlatformWorker, platformWorkerImpl);
+export const layerWorker: Layer.Layer<Worker.PlatformWorker> = Layer.succeed(
+  Worker.PlatformWorker,
+  platformWorkerImpl,
+);
 
 /**
  * @since 1.0.0
  * @category layers
  */
-export const layerManager: Layer.Layer<Worker.WorkerManager, never, never> =
-  Layer.provide(Worker.layerManager, layerWorker);
+export const layerManager: Layer.Layer<Worker.WorkerManager> = Layer.provide(
+  Worker.layerManager,
+  layerWorker,
+);
 
 /**
  * @since 1.0.0
@@ -68,5 +72,5 @@ export const layerManager: Layer.Layer<Worker.WorkerManager, never, never> =
  */
 export const layer = (
   spawn: (id: number) => globalThis.Worker | MessagePort,
-): Layer.Layer<Worker.Spawner | Worker.WorkerManager, never, never> =>
+): Layer.Layer<Worker.Spawner | Worker.WorkerManager> =>
   Layer.merge(layerManager, Worker.layerSpawner(spawn));
