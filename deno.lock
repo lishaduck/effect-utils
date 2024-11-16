@@ -1,16 +1,29 @@
 {
   "version": "4",
   "specifiers": {
+    "jsr:@std/path@^1.0.7": "1.0.8",
     "npm:@biomejs/biome@^1.9.4": "1.9.4",
     "npm:@effect/platform-browser@~0.48.21": "0.48.21_@effect+platform@0.69.21__effect@3.10.14_effect@3.10.14",
     "npm:@effect/platform-node-shared@~0.19.22": "0.19.22_@effect+platform@0.69.21__effect@3.10.14_effect@3.10.14",
     "npm:@effect/platform-node@~0.64.23": "0.64.23_@effect+platform@0.69.21__effect@3.10.14_effect@3.10.14",
     "npm:@effect/platform@~0.69.21": "0.69.21_effect@3.10.14",
     "npm:@effect/vitest@~0.13.14": "0.13.14_effect@3.10.14_vitest@2.1.5__vite@5.4.11",
+    "npm:@jsr/std__fs@^1.0.5": "1.0.5",
     "npm:@jsr/std__path@^1.0.8": "1.0.8",
     "npm:@vitest/coverage-v8@^2.1.5": "2.1.5_vitest@2.1.5__vite@5.4.11",
     "npm:effect@^3.10.14": "3.10.14",
     "npm:vitest@^2.1.5": "2.1.5_vite@5.4.11"
+  },
+  "jsr": {
+    "@std/fs@1.0.5": {
+      "integrity": "41806ad6823d0b5f275f9849a2640d87e4ef67c51ee1b8fb02426f55e02fd44e",
+      "dependencies": [
+        "jsr:@std/path"
+      ]
+    },
+    "@std/path@1.0.8": {
+      "integrity": "548fa456bb6a04d3c1a1e7477986b6cffbce95102d0bb447c67c4ee70e0364be"
+    }
   },
   "npm": {
     "@ampproject/remapping@2.3.0": {
@@ -227,6 +240,12 @@
       "dependencies": [
         "@jridgewell/resolve-uri",
         "@jridgewell/sourcemap-codec"
+      ]
+    },
+    "@jsr/std__fs@1.0.5": {
+      "integrity": "sha512-2ihx5BjO2IxpJ1aHy+joER4l1tJSktyaNaoDb9HOVK5IRToUY5OwstLe3+yhZnSn2KXlCo5DBS1mfAgrtu10aw==",
+      "dependencies": [
+        "@jsr/std__path"
       ]
     },
     "@jsr/std__path@1.0.8": {
@@ -954,6 +973,7 @@
             "npm:@effect/platform-node-shared@~0.19.22",
             "npm:@effect/platform-node@~0.64.23",
             "npm:@effect/platform@~0.69.21",
+            "npm:@jsr/std__fs@^1.0.5",
             "npm:@jsr/std__path@^1.0.8",
             "npm:effect@^3.10.14"
           ]

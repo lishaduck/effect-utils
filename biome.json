@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "organizeImports": {
     "enabled": true
   },
@@ -15,13 +15,15 @@
       "nursery": {
         "all": true,
         "noNestedTernary": "off",
+        "noSecrets": "off",
         "useImportRestrictions": "off"
       },
       "style": {
+        "noNamespaceImport": "off",
+        "useBlockStatements": "off",
         "useDefaultSwitchClause": "off",
         "useFilenamingConvention": "off",
-        "useNamingConvention": "off",
-        "noNamespaceImport": "off"
+        "useNamingConvention": "off"
       },
       "complexity": {
         "useLiteralKeys": "off"
