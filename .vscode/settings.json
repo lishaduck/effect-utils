@@ -1,6 +1,5 @@
 {
   "deno.enable": true,
-  "deno.lint": false,
   "[typescriptreact][typescript]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
