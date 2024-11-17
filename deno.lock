@@ -2,14 +2,14 @@
   "version": "4",
   "specifiers": {
     "npm:@biomejs/biome@^1.9.4": "1.9.4",
-    "npm:@effect/platform-browser@~0.48.21": "0.48.21_@effect+platform@0.69.21__effect@3.10.14_effect@3.10.14",
-    "npm:@effect/platform-node-shared@~0.19.22": "0.19.22_@effect+platform@0.69.21__effect@3.10.14_effect@3.10.14",
-    "npm:@effect/platform-node@~0.64.23": "0.64.23_@effect+platform@0.69.21__effect@3.10.14_effect@3.10.14",
-    "npm:@effect/platform@~0.69.21": "0.69.21_effect@3.10.14",
-    "npm:@effect/vitest@~0.13.14": "0.13.14_effect@3.10.14_vitest@2.1.5__vite@5.4.11",
+    "npm:@effect/platform-browser@~0.48.24": "0.48.24_@effect+platform@0.69.24__effect@3.10.15_effect@3.10.15",
+    "npm:@effect/platform-node-shared@~0.19.25": "0.19.25_@effect+platform@0.69.24__effect@3.10.15_effect@3.10.15",
+    "npm:@effect/platform-node@~0.64.26": "0.64.26_@effect+platform@0.69.24__effect@3.10.15_effect@3.10.15",
+    "npm:@effect/platform@~0.69.24": "0.69.24_effect@3.10.15",
+    "npm:@effect/vitest@~0.13.15": "0.13.15_effect@3.10.15_vitest@2.1.5__vite@5.4.11",
     "npm:@jsr/std__path@^1.0.8": "1.0.8",
     "npm:@vitest/coverage-v8@^2.1.5": "2.1.5_vitest@2.1.5__vite@5.4.11",
-    "npm:effect@^3.10.14": "3.10.14",
+    "npm:effect@^3.10.15": "3.10.15",
     "npm:vitest@^2.1.5": "2.1.5_vite@5.4.11"
   },
   "npm": {
@@ -79,16 +79,16 @@
     "@biomejs/cli-win32-x64@1.9.4": {
       "integrity": "sha512-8Y5wMhVIPaWe6jw2H+KlEm4wP/f7EW3810ZLmDlrEEy5KvBsb9ECEfu/kMWD484ijfQ8+nIi0giMgu9g1UAuuA=="
     },
-    "@effect/platform-browser@0.48.21_@effect+platform@0.69.21__effect@3.10.14_effect@3.10.14": {
-      "integrity": "sha512-gLdFR2LhxO0Hc4UVwR6zMo4Ccsyv+erf4b5AdbDQatznC9Cl7FxeLCakuXi8Nh0cEnlqzIEe8oKgdo/REib9Yw==",
+    "@effect/platform-browser@0.48.24_@effect+platform@0.69.24__effect@3.10.15_effect@3.10.15": {
+      "integrity": "sha512-Crzadc+kYVE4t0NaSMKEx2Eo6swwR5BZXR+ukDbWoBMvd3nQC/cC/U9PGrJ677j1bHMvWT+cY9RBJnwAddLJGw==",
       "dependencies": [
         "@effect/platform",
         "effect",
         "multipasta"
       ]
     },
-    "@effect/platform-node-shared@0.19.22_@effect+platform@0.69.21__effect@3.10.14_effect@3.10.14": {
-      "integrity": "sha512-ltneO5yn6DuT9+7R/ADvioqJwxvdOKED8nPajKdzrlj+AOi33QHBJdUWON0Nyh73UvsQaC/775SSgcn6m971Tw==",
+    "@effect/platform-node-shared@0.19.25_@effect+platform@0.69.24__effect@3.10.15_effect@3.10.15": {
+      "integrity": "sha512-q53V7lSf2qyke06QFj0y+9tnUkQwXXHfmFN5kA4D7TYWZgYIUmzDM0CRMgpUeLh7zSuk+KfNEhOHDpP7OKV4ZQ==",
       "dependencies": [
         "@effect/platform",
         "@parcel/watcher",
@@ -96,8 +96,8 @@
         "multipasta"
       ]
     },
-    "@effect/platform-node@0.64.23_@effect+platform@0.69.21__effect@3.10.14_effect@3.10.14": {
-      "integrity": "sha512-3hqoy8WluGQ7CQsvSnjXj0NXTgfNVOjA5pQsVCS7jP1oTiaHra0XHyg78904oiu2gRruLQejevlsHSwaVewRzQ==",
+    "@effect/platform-node@0.64.26_@effect+platform@0.69.24__effect@3.10.15_effect@3.10.15": {
+      "integrity": "sha512-7UiLDQDXBtq8ZzmWKyWRuKkvXVSDQlJ85xu2Qj3beG5qe63MblHKoLuXj2WtH1s8nyHiGPF1QXweZfYkptZM8w==",
       "dependencies": [
         "@effect/platform",
         "@effect/platform-node-shared",
@@ -107,16 +107,16 @@
         "ws"
       ]
     },
-    "@effect/platform@0.69.21_effect@3.10.14": {
-      "integrity": "sha512-xTa1mEVlSW/UdE3BSyP3/Y8+DFXCnhVEsvlSXaNoVOffJCvNhQ4w0lUYi03+P5eHu8ZDVlceVfT0XA8k8jy0zw==",
+    "@effect/platform@0.69.24_effect@3.10.15": {
+      "integrity": "sha512-SPQoIItSo6oFmCUcmnmEr9w+XH+IDOvgQI33kTw7Vjssm4ITfwx3BzMZl/M7Ozu9+g0IgE4SU/xRmW8YL3Z3BQ==",
       "dependencies": [
         "effect",
         "find-my-way-ts",
         "multipasta"
       ]
     },
-    "@effect/vitest@0.13.14_effect@3.10.14_vitest@2.1.5__vite@5.4.11": {
-      "integrity": "sha512-nARkTGQOf3mNlR4DqRa4aU0Oo4u8NBSLDwEyfsI36N5P0aG3tmeVdRuWgfZdSYlip6UuBaisIQ1VKW3q0zUYrg==",
+    "@effect/vitest@0.13.15_effect@3.10.15_vitest@2.1.5__vite@5.4.11": {
+      "integrity": "sha512-vcXv8RscguOHh/IaZk5wnATPqfNu7my9NcDb80uBdwbuaLhkoogMZ+N6Q2+298MWiGs/5l/Ho6bmukexx2IvKQ==",
       "dependencies": [
         "effect",
         "vitest"
@@ -505,8 +505,8 @@
     "eastasianwidth@0.2.0": {
       "integrity": "sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA=="
     },
-    "effect@3.10.14": {
-      "integrity": "sha512-NtEeDltifeP6SX1JptGL+k1k6CDjB++Yc7enAKEj3Pd7/4Llb4CDgZybqyiyqBkGK805ZLOIkyAyELdoJpmcqg==",
+    "effect@3.10.15": {
+      "integrity": "sha512-LdczPAFbtij3xGr9i+8PyDtuWdlXjSY5UJ8PKrYrr0DClKfR/OW3j8sxtambWYljzJAYD865KFhv7LdbWdG7VQ==",
       "dependencies": [
         "fast-check"
       ]
@@ -941,21 +941,21 @@
   "workspace": {
     "dependencies": [
       "npm:@biomejs/biome@^1.9.4",
-      "npm:@effect/vitest@~0.13.14",
+      "npm:@effect/vitest@~0.13.15",
       "npm:@vitest/coverage-v8@^2.1.5",
-      "npm:effect@^3.10.14",
+      "npm:effect@^3.10.15",
       "npm:vitest@^2.1.5"
     ],
     "members": {
       "packages/platform-deno": {
         "packageJson": {
           "dependencies": [
-            "npm:@effect/platform-browser@~0.48.21",
-            "npm:@effect/platform-node-shared@~0.19.22",
-            "npm:@effect/platform-node@~0.64.23",
-            "npm:@effect/platform@~0.69.21",
+            "npm:@effect/platform-browser@~0.48.24",
+            "npm:@effect/platform-node-shared@~0.19.25",
+            "npm:@effect/platform-node@~0.64.26",
+            "npm:@effect/platform@~0.69.24",
             "npm:@jsr/std__path@^1.0.8",
-            "npm:effect@^3.10.14"
+            "npm:effect@^3.10.15"
           ]
         }
       }
