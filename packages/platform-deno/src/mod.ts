@@ -21,13 +21,25 @@
  */
 
 /**
- * @file
  * Provides a platform context using Deno.
+ *
+ * @since 0.1.0
  */
 export * as DenoContext from "./DenoContext.ts";
 
 /**
- * @file
  * An effect runtime using Deno.
+ *
+ * @since 0.1.0
  */
 export * as DenoRuntime from "./DenoRuntime.ts";
+
+/**
+ * @since 0.1.0
+ */
+export * as DenoPath from "./DenoPath.ts";
+
+/**
+ * @since 0.1.0
+ */
+export * as DenoWorker from "./DenoWorker.ts";

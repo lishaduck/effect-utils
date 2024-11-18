@@ -1,5 +1,6 @@
 /**
- * @since 1.0.0
+ * @file
+ * @since 0.1.0
  */
 
 import { BadArgument } from "@effect/platform/Error";
@@ -32,7 +33,7 @@ const toFileUrl = (path: string): Effect.Effect<URL, BadArgument> =>
   });
 
 /**
- * @since 1.0.0
+ * @since 0.1.0
  * @category layer
  */
 export const layerPosix: Layer.Layer<Path> = Layer.succeed(
@@ -47,7 +48,7 @@ export const layerPosix: Layer.Layer<Path> = Layer.succeed(
 );
 
 /**
- * @since 1.0.0
+ * @since 0.1.0
  * @category layer
  */
 export const layerWin32: Layer.Layer<Path> = Layer.succeed(
@@ -62,7 +63,7 @@ export const layerWin32: Layer.Layer<Path> = Layer.succeed(
 );
 
 /**
- * @since 1.0.0
+ * @since 0.1.0
  * @category layer
  */
 export const layer: Layer.Layer<Path> = Layer.succeed(

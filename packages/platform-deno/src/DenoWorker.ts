@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @since 0.1.0
+ */
+
 import * as Worker from "@effect/platform/Worker";
 import { WorkerError } from "@effect/platform/WorkerError";
 import { Deferred, Effect, Layer, Scope } from "effect";
@@ -49,7 +54,7 @@ const platformWorkerImpl = Worker.makePlatform<
 });
 
 /**
- * @since 1.0.0
+ * @since 0.1.0
  * @category layers
  */
 export const layerWorker: Layer.Layer<Worker.PlatformWorker> = Layer.succeed(
@@ -58,7 +63,7 @@ export const layerWorker: Layer.Layer<Worker.PlatformWorker> = Layer.succeed(
 );
 
 /**
- * @since 1.0.0
+ * @since 0.1.0
  * @category layers
  */
 export const layerManager: Layer.Layer<Worker.WorkerManager> = Layer.provide(
@@ -67,7 +72,7 @@ export const layerManager: Layer.Layer<Worker.WorkerManager> = Layer.provide(
 );
 
 /**
- * @since 1.0.0
+ * @since 0.1.0
  * @category layers
  */
 export const layer = (

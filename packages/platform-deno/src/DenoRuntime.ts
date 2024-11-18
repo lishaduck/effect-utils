@@ -1,8 +1,13 @@
+/**
+ * @file
+ * @since 0.1.0
+ */
+
 import { type RunMain, makeRunMain } from "@effect/platform/Runtime";
 import { constVoid } from "effect/Function";
 
 /**
- * @since 1.0.0
+ * @since 0.1.0
  * @category runtime
  */
 export const runMain: RunMain = makeRunMain(({ fiber, teardown }) => {

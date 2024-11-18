@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @since 0.1.0
+ */
+
 import type {
   CommandExecutor,
   FileSystem,
@@ -13,7 +18,7 @@ import * as DenoPath from "./DenoPath.ts";
 import * as DenoWorker from "./DenoWorker.ts";
 
 /**
- * @since 1.0.0
+ * @since 0.1.0
  * @category models
  */
 export type DenoContext =
@@ -24,7 +29,7 @@ export type DenoContext =
   | Worker.WorkerManager;
 
 /**
- * @since 1.0.0
+ * @since 0.1.0
  * @category layer
  */
 export const layer: Layer.Layer<DenoContext> = Layer.mergeAll(
