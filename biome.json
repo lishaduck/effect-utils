@@ -26,6 +26,7 @@
         "useNamingConvention": "off"
       },
       "complexity": {
+        "noVoid": "off",
         "useLiteralKeys": "off"
       },
       "correctness": {
