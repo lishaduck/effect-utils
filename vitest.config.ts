@@ -5,5 +5,12 @@ export default defineConfig({
     coverage: {
       // enabled: true,
     },
+    sequence: {
+      concurrent: true,
+      shuffle: {
+        files: false,
+        tests: true,
+      },
+    },
   },
 });
