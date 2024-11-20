@@ -4,6 +4,7 @@
  * ```ts
  * import { Path } from "@effect/platform";
  * import { DenoContext, DenoRuntime } from "@lishaduck/effect-platform-deno";
+ * import { assertEquals } from "@std/assert";
  * import { Console, Effect } from "effect";
  *
  * const program = Effect.gen(function* () {
@@ -13,7 +14,7 @@
  *   // Join parts of a path to create a complete file path
  *   const tmpPath = path.join("tmp", "file.txt");
  *
- *   yield* Console.log(tmpPath);
+ *   assertEquals(tmpPath, "tmp/file.txt")
  * });
  *
  * DenoRuntime.runMain(program.pipe(Effect.provide(DenoContext.layer)));
