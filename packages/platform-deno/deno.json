@@ -10,5 +10,15 @@
     "./DenoRuntime": "./src/DenoRuntime.ts",
     "./DenoWorker": "./src/DenoWorker.ts",
     "./DenoWorkerRunner": "./src/DenoWorkerRunner.ts"
+  },
+  "imports": {
+    "@types/node": "npm:@types/node@22.7.3",
+    "@effect/platform": "npm:@effect/platform@^0.72.0",
+    "@effect/platform-browser": "npm:@effect/platform-browser@^0.51.0",
+    "@effect/platform-node": "npm:@effect/platform-node@^0.68.0",
+    "@effect/platform-node-shared": "npm:@effect/platform-node-shared@^0.22.0",
+    "@std/fs": "jsr:@std/fs@^1.0.8",
+    "@std/path": "jsr:@std/path@^1.0.8",
+    "effect": "npm:effect@^3.12.0"
   }
 }
