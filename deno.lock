@@ -3,13 +3,14 @@
   "specifiers": {
     "jsr:@std/assert@^1.0.8": "1.0.8",
     "jsr:@std/internal@^1.0.5": "1.0.5",
+    "jsr:@std/path@^1.0.8": "1.0.8",
     "npm:@biomejs/biome@^1.9.4": "1.9.4",
+    "npm:@deno/vite-plugin@1": "1.0.0_vite@5.4.11",
     "npm:@effect/platform-browser@~0.48.24": "0.48.24_@effect+platform@0.69.24__effect@3.10.15_effect@3.10.15",
     "npm:@effect/platform-node-shared@~0.19.25": "0.19.25_@effect+platform@0.69.24__effect@3.10.15_effect@3.10.15",
     "npm:@effect/platform-node@~0.64.26": "0.64.26_@effect+platform@0.69.24__effect@3.10.15_effect@3.10.15",
     "npm:@effect/platform@~0.69.24": "0.69.24_effect@3.10.15",
     "npm:@effect/vitest@~0.13.15": "0.13.15_effect@3.10.15_vitest@2.1.5__vite@5.4.11",
-    "npm:@jsr/std__path@^1.0.8": "1.0.8",
     "npm:@vitest/coverage-v8@^2.1.5": "2.1.5_vitest@2.1.5__vite@5.4.11",
     "npm:@vitest/ui@^2.1.5": "2.1.5_vitest@2.1.5__vite@5.4.11",
     "npm:effect@^3.10.15": "3.10.15",
@@ -24,6 +25,9 @@
     },
     "@std/internal@1.0.5": {
       "integrity": "54a546004f769c1ac9e025abd15a76b6671ddc9687e2313b67376125650dc7ba"
+    },
+    "@std/path@1.0.8": {
+      "integrity": "548fa456bb6a04d3c1a1e7477986b6cffbce95102d0bb447c67c4ee70e0364be"
     }
   },
   "npm": {
@@ -92,6 +96,12 @@
     },
     "@biomejs/cli-win32-x64@1.9.4": {
       "integrity": "sha512-8Y5wMhVIPaWe6jw2H+KlEm4wP/f7EW3810ZLmDlrEEy5KvBsb9ECEfu/kMWD484ijfQ8+nIi0giMgu9g1UAuuA=="
+    },
+    "@deno/vite-plugin@1.0.0_vite@5.4.11": {
+      "integrity": "sha512-Q9UeWqs3s7B5lqzu1Z5QrzYAzqTj3+F9YW17tWobGRbT2G40ihwis6zK/+QgMgcG4fm3IqdIfXmpQYhkZpdMfw==",
+      "dependencies": [
+        "vite"
+      ]
     },
     "@effect/platform-browser@0.48.24_@effect+platform@0.69.24__effect@3.10.15_effect@3.10.15": {
       "integrity": "sha512-Crzadc+kYVE4t0NaSMKEx2Eo6swwR5BZXR+ukDbWoBMvd3nQC/cC/U9PGrJ677j1bHMvWT+cY9RBJnwAddLJGw==",
@@ -242,9 +252,6 @@
         "@jridgewell/resolve-uri",
         "@jridgewell/sourcemap-codec"
       ]
-    },
-    "@jsr/std__path@1.0.8": {
-      "integrity": "sha512-eNBGlh/8ZVkMxtFH4bwIzlAeKoHYk5in4wrBZhi20zMdOiuX4QozP4+19mIXBT2lzHDjhuVLyECbhFeR304iDg=="
     },
     "@parcel/watcher-android-arm64@2.5.0": {
       "integrity": "sha512-qlX4eS28bUcQCdribHkg/herLe+0A9RyYC+mm2PXpncit8z5b3nSqGVzMNR3CmtAOgRutiZ02eIJJgP/b1iEFQ=="
@@ -1034,6 +1041,7 @@
     "dependencies": [
       "jsr:@std/assert@^1.0.8",
       "npm:@biomejs/biome@^1.9.4",
+      "npm:@deno/vite-plugin@1",
       "npm:@effect/vitest@~0.13.15",
       "npm:@vitest/coverage-v8@^2.1.5",
       "npm:@vitest/ui@^2.1.5",
@@ -1042,16 +1050,14 @@
     ],
     "members": {
       "packages/platform-deno": {
-        "packageJson": {
-          "dependencies": [
-            "npm:@effect/platform-browser@~0.48.24",
-            "npm:@effect/platform-node-shared@~0.19.25",
-            "npm:@effect/platform-node@~0.64.26",
-            "npm:@effect/platform@~0.69.24",
-            "npm:@jsr/std__path@^1.0.8",
-            "npm:effect@^3.10.15"
-          ]
-        }
+        "dependencies": [
+          "jsr:@std/path@^1.0.8",
+          "npm:@effect/platform-browser@~0.48.24",
+          "npm:@effect/platform-node-shared@~0.19.25",
+          "npm:@effect/platform-node@~0.64.26",
+          "npm:@effect/platform@~0.69.24",
+          "npm:effect@^3.10.15"
+        ]
       }
     }
   }

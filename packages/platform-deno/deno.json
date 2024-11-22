@@ -3,5 +3,13 @@
   "version": "0.1.0",
   "exports": {
     ".": "./src/mod.ts"
+  },
+  "imports": {
+    "@effect/platform": "npm:@effect/platform@^0.69.24",
+    "@effect/platform-browser": "npm:@effect/platform-browser@^0.48.24",
+    "@effect/platform-node-shared": "npm:@effect/platform-node-shared@^0.19.25",
+    "@effect/platform-node": "npm:@effect/platform-node@^0.64.26",
+    "@std/path": "jsr:@std/path@^1.0.8",
+    "effect": "npm:effect@^3.10.15"
   }
 }
