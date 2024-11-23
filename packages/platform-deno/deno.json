@@ -2,6 +2,11 @@
   "name": "@lishaduck/effect-platform-deno",
   "version": "0.1.0",
   "exports": {
-    ".": "./src/mod.ts"
+    ".": "./src/mod.ts",
+    "./DenoContext": "./src/DenoContext.ts",
+    "./DenoFileSystem": "./src/DenoFileSystem.ts",
+    "./DenoPath": "./src/DenoPath.ts",
+    "./DenoRuntime": "./src/DenoRuntime.ts",
+    "./DenoWorker": "./src/DenoWorker.ts"
   }
 }

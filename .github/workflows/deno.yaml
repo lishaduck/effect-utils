@@ -56,5 +56,7 @@ jobs:
         run: deno task typecheck
       - name: 📖 Run documentation tests
         run: deno task test:doc
+      - name: Lint documentation
+        run: deno task lint:doc
       - name: 🧪 Run tests
         run: deno task test

@@ -13,7 +13,7 @@
     "npm:@jsr/std__path@^1.0.8": "1.0.8",
     "npm:@types/node@^22.9.0": "22.9.0",
     "npm:@vitest/coverage-v8@^2.1.5": "2.1.5_vitest@2.1.5__vite@5.4.11",
-    "npm:@vitest/ui@^2.1.5": "2.1.5_vitest@2.1.5__vite@5.4.11",
+    "npm:@vitest/ui@^2.1.5": "2.1.5_vitest@2.1.5__vite@5.4.11_vitest@2.1.5__vite@5.4.11__@types+node@22.9.0__@vitest+ui@2.1.5___vitest@2.1.5____vite@5.4.11__vite@5.4.11___@types+node@22.9.0_@types+node@22.9.0",
     "npm:effect@^3.10.15": "3.10.15",
     "npm:vitest@^2.1.5": "2.1.5_vite@5.4.11"
   },
@@ -135,7 +135,7 @@
       "integrity": "sha512-vcXv8RscguOHh/IaZk5wnATPqfNu7my9NcDb80uBdwbuaLhkoogMZ+N6Q2+298MWiGs/5l/Ho6bmukexx2IvKQ==",
       "dependencies": [
         "effect",
-        "vitest@2.1.5_vite@5.4.11"
+        "vitest"
       ]
     },
     "@esbuild/aix-ppc64@0.21.5": {
@@ -399,7 +399,7 @@
         "std-env",
         "test-exclude",
         "tinyrainbow",
-        "vitest@2.1.5_vite@5.4.11"
+        "vitest"
       ]
     },
     "@vitest/expect@2.1.5": {
@@ -411,7 +411,7 @@
         "tinyrainbow"
       ]
     },
-    "@vitest/mocker@2.1.5_vite@5.4.11": {
+    "@vitest/mocker@2.1.5_vite@5.4.11_vite@5.4.11__@types+node@22.9.0_@types+node@22.9.0": {
       "integrity": "sha512-XYW6l3UuBmitWqSUXTNXcVBUCRytDogBsWuNXQijc00dtnU/9OqpXWp4OJroVrad/gLIomAq9aW8yWDBtMthhQ==",
       "dependencies": [
         "@vitest/spy",
@@ -447,7 +447,7 @@
         "tinyspy"
       ]
     },
-    "@vitest/ui@2.1.5_vitest@2.1.5__vite@5.4.11": {
+    "@vitest/ui@2.1.5_vitest@2.1.5__vite@5.4.11_vitest@2.1.5__vite@5.4.11__@types+node@22.9.0__@vitest+ui@2.1.5___vitest@2.1.5____vite@5.4.11__vite@5.4.11___@types+node@22.9.0_@types+node@22.9.0": {
       "integrity": "sha512-ERgKkDMTfngrZip6VG5h8L9B5D0AH/4+bga4yR1UzGH7c2cxv3LWogw2Dvuwr9cP3/iKDHYys7kIFLDKpxORTg==",
       "dependencies": [
         "@vitest/utils",
@@ -457,7 +457,7 @@
         "sirv",
         "tinyglobby",
         "tinyrainbow",
-        "vitest@2.1.5_vite@5.4.11_@vitest+ui@2.1.5__vitest@2.1.5___vite@5.4.11"
+        "vitest"
       ]
     },
     "@vitest/utils@2.1.5": {
@@ -944,7 +944,7 @@
     "undici@6.21.0": {
       "integrity": "sha512-BUgJXc752Kou3oOIuU1i+yZZypyZRqNPW0vqoMPl8VaoalSfeR0D8/t4iAS3yirs79SSMTxTag+ZC86uswv+Cw=="
     },
-    "vite-node@2.1.5": {
+    "vite-node@2.1.5_@types+node@22.9.0": {
       "integrity": "sha512-rd0QIgx74q4S1Rd56XIiL2cYEdyWn13cunYBIuqh9mpmQr7gGS0IxXoP8R6OaZtNQQLyXSWbd4rXKYUbhFpK5w==",
       "dependencies": [
         "cac",
@@ -957,6 +957,7 @@
     "vite@5.4.11": {
       "integrity": "sha512-c7jFQRklXua0mTzneGW9QVyxFjUgwcihC4bXEtujIo2ouWCe1Ajt/amn2PCxYnhYfd5k09JX3SB7OYWFKYqj8Q==",
       "dependencies": [
+        "@types/node",
         "esbuild",
         "fsevents",
         "postcss",
@@ -966,31 +967,7 @@
     "vitest@2.1.5_vite@5.4.11": {
       "integrity": "sha512-P4ljsdpuzRTPI/kbND2sDZ4VmieerR2c9szEZpjc+98Z9ebvnXmM5+0tHEKqYZumXqlvnmfWsjeFOjXVriDG7A==",
       "dependencies": [
-        "@vitest/expect",
-        "@vitest/mocker",
-        "@vitest/pretty-format",
-        "@vitest/runner",
-        "@vitest/snapshot",
-        "@vitest/spy",
-        "@vitest/utils",
-        "chai",
-        "debug",
-        "expect-type",
-        "magic-string",
-        "pathe",
-        "std-env",
-        "tinybench",
-        "tinyexec",
-        "tinypool",
-        "tinyrainbow",
-        "vite",
-        "vite-node",
-        "why-is-node-running"
-      ]
-    },
-    "vitest@2.1.5_vite@5.4.11_@vitest+ui@2.1.5__vitest@2.1.5___vite@5.4.11": {
-      "integrity": "sha512-P4ljsdpuzRTPI/kbND2sDZ4VmieerR2c9szEZpjc+98Z9ebvnXmM5+0tHEKqYZumXqlvnmfWsjeFOjXVriDG7A==",
-      "dependencies": [
+        "@types/node",
         "@vitest/expect",
         "@vitest/mocker",
         "@vitest/pretty-format",

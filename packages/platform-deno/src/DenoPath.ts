@@ -1,5 +1,7 @@
 /**
- * @file
+ * This module exposes path operations from the Deno Standard Library.
+ * @module
+ *
  * @since 0.1.0
  */
 
@@ -33,6 +35,8 @@ const toFileUrl = (path: string): Effect.Effect<URL, BadArgument> =>
   });
 
 /**
+ * A {@linkplain Layer.Layer | layer} that provides POSIX path operations.
+ *
  * @since 0.1.0
  * @category layer
  */
@@ -48,6 +52,8 @@ export const layerPosix: Layer.Layer<Path> = Layer.succeed(
 );
 
 /**
+ * A {@linkplain Layer.Layer | layer} that provides Windows path operations.
+ *
  * @since 0.1.0
  * @category layer
  */
@@ -63,6 +69,8 @@ export const layerWin32: Layer.Layer<Path> = Layer.succeed(
 );
 
 /**
+ * A {@linkplain Layer.Layer | layer} that provides OS-agnostic path operations.
+ *
  * @since 0.1.0
  * @category layer
  */
