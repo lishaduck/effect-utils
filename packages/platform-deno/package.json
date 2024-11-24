@@ -6,7 +6,7 @@
     "@std/path": "npm:@jsr/std__path@^1.0.8"
   },
   "devDependencies": {
-    "@types/node": "npm:@types/node@^22.9.0",
+    "@types/node": "npm:@types/node@<22.7.4",
     "effect": "npm:effect@^3.10.15",
     "@effect/platform": "npm:@effect/platform@^0.69.24",
     "@effect/platform-node": "npm:@effect/platform-node@^0.64.26",
