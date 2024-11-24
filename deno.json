@@ -9,6 +9,7 @@
     "@std/assert": "jsr:@std/assert@^1.0.8",
     "@vitest/coverage-v8": "npm:@vitest/coverage-v8@^2.1.5",
     "@vitest/ui": "npm:@vitest/ui@^2.1.5",
+    "@vitest/web-worker": "npm:@vitest/web-worker@^2.1.5",
     "effect": "npm:effect@^3.10.15",
     "vitest": "npm:vitest@^2.1.5"
   },

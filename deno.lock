@@ -14,6 +14,7 @@
     "npm:@types/node@<22.7.4": "22.7.3",
     "npm:@vitest/coverage-v8@^2.1.5": "2.1.5_vitest@2.1.5__vite@5.4.11",
     "npm:@vitest/ui@^2.1.5": "2.1.5_vitest@2.1.5__vite@5.4.11_vitest@2.1.5__vite@5.4.11__@types+node@22.9.0__@vitest+ui@2.1.5___vitest@2.1.5____vite@5.4.11__vite@5.4.11___@types+node@22.9.0_@types+node@22.9.0",
+    "npm:@vitest/web-worker@^2.1.5": "2.1.5_vitest@2.1.5__vite@5.4.11_@vitest+ui@2.1.5__vitest@2.1.5___vite@5.4.11",
     "npm:effect@^3.10.15": "3.10.15",
     "npm:vitest@^2.1.5": "2.1.5_vite@5.4.11"
   },
@@ -466,6 +467,13 @@
         "@vitest/pretty-format",
         "loupe",
         "tinyrainbow"
+      ]
+    },
+    "@vitest/web-worker@2.1.5_vitest@2.1.5__vite@5.4.11_@vitest+ui@2.1.5__vitest@2.1.5___vite@5.4.11": {
+      "integrity": "sha512-Cl+jooxraKRVUGZCK7py/dgj4JqypxYRM3Mc/uQ+LUlSMC8yJ1lL12LnXSv/z3l/RI/OpmAH6iAVPKSf5LpjdQ==",
+      "dependencies": [
+        "debug",
+        "vitest"
       ]
     },
     "ansi-regex@5.0.1": {
@@ -1031,6 +1039,7 @@
       "npm:@effect/vitest@~0.13.15",
       "npm:@vitest/coverage-v8@^2.1.5",
       "npm:@vitest/ui@^2.1.5",
+      "npm:@vitest/web-worker@^2.1.5",
       "npm:effect@^3.10.15",
       "npm:vitest@^2.1.5"
     ],
