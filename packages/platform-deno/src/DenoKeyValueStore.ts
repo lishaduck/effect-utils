@@ -1,5 +1,5 @@
 /**
- * @since 1.0.0
+ * @since 1.0.2
  */
 import * as KeyValueStore from "@effect/platform/KeyValueStore";
 import type * as Layer from "effect/Layer";
@@ -9,7 +9,7 @@ import type * as Layer from "effect/Layer";
  *
  * Values are stored between sessions.
  *
- * @since 1.0.0
+ * @since 1.0.2
  * @category models
  */
 export const layerLocalStorage: Layer.Layer<KeyValueStore.KeyValueStore> =
@@ -20,7 +20,7 @@ export const layerLocalStorage: Layer.Layer<KeyValueStore.KeyValueStore> =
  *
  * Values are stored only for the current session.
  *
- * @since 1.0.0
+ * @since 1.0.2
  * @category models
  */
 export const layerSessionStorage: Layer.Layer<KeyValueStore.KeyValueStore> =

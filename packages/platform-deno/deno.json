@@ -5,6 +5,7 @@
     ".": "./src/mod.ts",
     "./DenoContext": "./src/DenoContext.ts",
     "./DenoFileSystem": "./src/DenoFileSystem.ts",
+    "./DenoKeyValueStore": "./src/DenoKeyValueStore.ts",
     "./DenoPath": "./src/DenoPath.ts",
     "./DenoRuntime": "./src/DenoRuntime.ts",
     "./DenoWorker": "./src/DenoWorker.ts",
