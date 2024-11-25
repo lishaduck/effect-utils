@@ -2,16 +2,16 @@
   "name": "@lishaduck/effect-platform-deno",
   "type": "module",
   "dependencies": {
-    "@std/fs": "npm:@jsr/std__fs@^1.0.5",
+    "@std/fs": "npm:@jsr/std__fs@^1.0.6",
     "@std/path": "npm:@jsr/std__path@^1.0.8"
   },
   "devDependencies": {
     "@types/node": "npm:@types/node@<22.7.4",
-    "effect": "npm:effect@^3.10.15",
-    "@effect/platform": "npm:@effect/platform@^0.69.24",
-    "@effect/platform-node": "npm:@effect/platform-node@^0.64.26",
-    "@effect/platform-node-shared": "npm:@effect/platform-node-shared@^0.19.25",
-    "@effect/platform-browser": "npm:@effect/platform-browser@^0.48.24"
+    "effect": "npm:effect@^3.10.16",
+    "@effect/platform": "npm:@effect/platform@^0.69.25",
+    "@effect/platform-node": "npm:@effect/platform-node@^0.64.27",
+    "@effect/platform-node-shared": "npm:@effect/platform-node-shared@^0.19.26",
+    "@effect/platform-browser": "npm:@effect/platform-browser@^0.48.25"
   },
   "peerDependencies": {
     "effect": "npm:effect@^3.10.15",
