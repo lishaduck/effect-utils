@@ -7,6 +7,7 @@
     "./DenoFileSystem": "./src/DenoFileSystem.ts",
     "./DenoPath": "./src/DenoPath.ts",
     "./DenoRuntime": "./src/DenoRuntime.ts",
-    "./DenoWorker": "./src/DenoWorker.ts"
+    "./DenoWorker": "./src/DenoWorker.ts",
+    "./DenoWorkerRunner": "./src/DenoWorkerRunner.ts"
   }
 }
