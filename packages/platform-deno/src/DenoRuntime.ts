@@ -1,5 +1,7 @@
 /**
- * @file
+ * This module exposes an {@link https://effect.website/docs/runtime/ | Effect Runtime} powered by Deno.
+ * @module
+ *
  * @since 0.1.0
  */
 
@@ -7,6 +9,8 @@ import { type RunMain, makeRunMain } from "@effect/platform/Runtime";
 import { constVoid } from "effect/Function";
 
 /**
+ * Run an Effect as the entrypoint to a Deno application.
+ *
  * @since 0.1.0
  * @category runtime
  */

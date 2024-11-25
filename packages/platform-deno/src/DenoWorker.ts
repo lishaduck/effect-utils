@@ -1,5 +1,7 @@
 /**
- * @file
+ * This module exposes multithreading primitives using the standard Web Worker API.
+ * @module
+ *
  * @since 0.1.0
  */
 
@@ -54,6 +56,8 @@ const platformWorkerImpl = Worker.makePlatform<
 });
 
 /**
+ * A {@linkplain Layer.Layer | layer} that provides multithreading capabilities.
+ *
  * @since 0.1.0
  * @category layers
  */
@@ -63,6 +67,8 @@ export const layerWorker: Layer.Layer<Worker.PlatformWorker> = Layer.succeed(
 );
 
 /**
+ * A {@linkplain Layer.Layer | layer} that provides multithreading capabilities.
+ *
  * @since 0.1.0
  * @category layers
  */
@@ -72,6 +78,8 @@ export const layerManager: Layer.Layer<Worker.WorkerManager> = Layer.provide(
 );
 
 /**
+ * A {@linkplain Layer.Layer | layer} that provides multithreading capabilities.
+ *
  * @since 0.1.0
  * @category layers
  */

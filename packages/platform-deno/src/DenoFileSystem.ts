@@ -1,5 +1,7 @@
 /**
- * @file
+ * This modules exposes file system access to Effect-based applications that use Deno.
+ * @module
+ *
  * @since 0.1.1
  */
 
@@ -910,6 +912,8 @@ const makeFileSystem = Effect.map(
 );
 
 /**
+ * A {@linkplain Layer.Layer | layer} that provides file system operations.
+ *
  * @since 0.0.1
  * @category layer
  */
