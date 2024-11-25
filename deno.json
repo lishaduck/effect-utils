@@ -28,5 +28,8 @@
     "noUncheckedIndexedAccess": true,
     "noPropertyAccessFromIndexSignature": true,
     "useUnknownInCatchVariables": true
+  },
+  "lint": {
+    "exclude": ["no-explicit-any"]
   }
 }

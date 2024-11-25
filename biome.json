@@ -15,13 +15,15 @@
       "nursery": {
         "all": true,
         "noNestedTernary": "off",
+        "noSecrets": "off",
         "useImportRestrictions": "off"
       },
       "style": {
+        "noNamespaceImport": "off",
+        "useBlockStatements": "off",
         "useDefaultSwitchClause": "off",
         "useFilenamingConvention": "off",
-        "useNamingConvention": "off",
-        "noNamespaceImport": "off"
+        "useNamingConvention": "off"
       },
       "complexity": {
         "useLiteralKeys": "off"
@@ -62,6 +64,9 @@
     "useIgnoreFile": true,
     "clientKind": "git",
     "defaultBranch": "main"
+  },
+  "files": {
+    "ignore": ["deno.lock"]
   },
   "javascript": {
     "globals": ["Deno"]
