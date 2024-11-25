@@ -2,6 +2,27 @@
  * This module exposes path operations from the Deno Standard Library.
  * @module
  *
+ *
+ * @example
+ * ```ts
+ * import { Path } from "@effect/platform";
+ * import { DenoContext, DenoRuntime } from "@lishaduck/effect-platform-deno";
+ * import { assertEquals } from "@std/assert";
+ * import { Console, Effect } from "effect";
+ *
+ * const program = Effect.gen(function* () {
+ *   // Access the Path service
+ *   const path = yield* Path.Path;
+ *
+ *   // Join parts of a path to create a complete file path
+ *   const extension = path.extname("file.txt");
+ *
+ *   assertEquals(extension, ".txt");
+ * });
+ *
+ * DenoRuntime.runMain(program.pipe(Effect.provide(DenoContext.layer)));
+ * ```
+ *
  * @since 0.1.0
  */
 
