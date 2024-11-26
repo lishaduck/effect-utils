@@ -9,15 +9,14 @@ interface Name {
 const Name = Context.GenericTag<Name, string>("Name");
 
 const WorkerLive = Runner.layerSerialized(WorkerMessage, {
-  GetPersonById: (req): Stream.Stream<Person, never, never> =>
+  GetPersonById: (req): Stream.Stream<Person> =>
     Stream.make(
       new Person({ id: req.id, name: "test", data: new Uint8Array([1, 2, 3]) }),
       new Person({ id: req.id, name: "ing", data: new Uint8Array([4, 5, 6]) }),
     ),
   GetUserById: (req): Effect.Effect<User, never, Name> =>
     Effect.map(Name, (name) => new User({ id: req.id, name })),
-  InitialMessage: (req): Layer.Layer<Name, never, never> =>
-    Layer.succeed(Name, req.name),
+  InitialMessage: (req): Layer.Layer<Name> => Layer.succeed(Name, req.name),
   GetSpan: (): Effect.Effect<
     {
       traceId: string;
@@ -40,7 +39,7 @@ const WorkerLive = Runner.layerSerialized(WorkerMessage, {
         })),
       };
     }).pipe(Effect.withSpan("GetSpan")),
-  RunnerInterrupt: (): Effect.Effect<never, never, never> => Effect.interrupt,
+  RunnerInterrupt: (): Effect.Effect<never> => Effect.interrupt,
 }).pipe(Layer.provide(DenoRunner.layer));
 
 Effect.runFork(Layer.launch(WorkerLive));

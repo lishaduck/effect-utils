@@ -57,7 +57,7 @@ export const make: (self: MessagePort | Window) => Runner.PlatformRunner = (
           portId: number,
           message: O,
           transfer?: readonly unknown[],
-        ): Effect.Effect<void, never, never> =>
+        ): Effect.Effect<void> =>
           Effect.sync(() => {
             (ports.get(portId)?.[0] ?? (self as MessagePort)).postMessage(
               [1, message],
