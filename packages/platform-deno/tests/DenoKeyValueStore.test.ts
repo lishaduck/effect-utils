@@ -1,33 +1,32 @@
-import * as Kv from "@effect/platform-browser/BrowserKeyValueStore";
 import * as KeyValueStore from "@effect/platform/KeyValueStore";
 import { afterEach, describe, expect, it } from "@effect/vitest";
 import { Effect, type Layer, Option } from "effect";
+import * as Kv from "../src/DenoKeyValueStore.ts";
 
-describe.sequential("KeyValueStore / layerLocalStorage", () => {
+describe.sequential("layerLocalStorage", () => {
   testLayer(Kv.layerLocalStorage);
 });
-describe.sequential("KeyValueStore / layerSessionStorage", () => {
+describe.sequential("layerSessionStorage", () => {
   testLayer(Kv.layerSessionStorage);
+});
+describe.sequential("layerKv", () => {
+  testLayer(Kv.layerKv);
 });
 
 const testLayer = <E>(
   layer: Layer.Layer<KeyValueStore.KeyValueStore, E>,
 ): void => {
-  const run = <E, A>(
-    effect: Effect.Effect<A, E, KeyValueStore.KeyValueStore>,
-  ): Promise<A> => Effect.runPromise(Effect.provide(effect, layer));
+  it.layer(layer)((it) => {
+    afterEach(async () => {
+      await Effect.runPromise(
+        Effect.gen(function* () {
+          const kv = yield* KeyValueStore.KeyValueStore;
+          yield* kv.clear;
+        }).pipe(Effect.provide(layer)),
+      );
+    });
 
-  afterEach(async () => {
-    await run(
-      Effect.gen(function* () {
-        const kv = yield* KeyValueStore.KeyValueStore;
-        yield* kv.clear;
-      }),
-    );
-  });
-
-  it("set", () =>
-    run(
+    it.effect("set", () =>
       Effect.gen(function* () {
         const kv = yield* KeyValueStore.KeyValueStore;
         yield* kv.set("/foo/bar", "bar");
@@ -38,10 +37,9 @@ const testLayer = <E>(
         expect(value).toEqual(Option.some("bar"));
         expect(length).toEqual(1);
       }),
-    ));
+    );
 
-  it("get/ missing", () =>
-    run(
+    it.effect("get/ missing", () =>
       Effect.gen(function* () {
         const kv = yield* KeyValueStore.KeyValueStore;
         yield* kv.clear;
@@ -49,10 +47,9 @@ const testLayer = <E>(
 
         expect(value).toEqual(Option.none());
       }),
-    ));
+    );
 
-  it("remove", () =>
-    run(
+    it.effect("remove", () =>
       Effect.gen(function* () {
         const kv = yield* KeyValueStore.KeyValueStore;
         yield* kv.set("foo", "bar");
@@ -64,10 +61,9 @@ const testLayer = <E>(
         expect(value).toEqual(Option.none());
         expect(length).toEqual(0);
       }),
-    ));
+    );
 
-  it("clear", () =>
-    run(
+    it.effect("clear", () =>
       Effect.gen(function* () {
         const kv = yield* KeyValueStore.KeyValueStore;
         yield* kv.set("foo", "bar");
@@ -79,10 +75,9 @@ const testLayer = <E>(
         expect(value).toEqual(Option.none());
         expect(length).toEqual(0);
       }),
-    ));
+    );
 
-  it("modify", () =>
-    run(
+    it.effect("modify", () =>
       Effect.gen(function* () {
         const kv = yield* KeyValueStore.KeyValueStore;
         yield* kv.set("foo", "bar");
@@ -93,10 +88,9 @@ const testLayer = <E>(
         expect(value).toEqual(Option.some("barbar"));
         expect(length).toEqual(1);
       }),
-    ));
+    );
 
-  it("modify - none", () =>
-    run(
+    it.effect("modify - none", () =>
       Effect.gen(function* () {
         const kv = yield* KeyValueStore.KeyValueStore;
 
@@ -106,5 +100,6 @@ const testLayer = <E>(
         expect(value).toEqual(Option.none());
         expect(length).toEqual(0);
       }),
-    ));
+    );
+  });
 };
