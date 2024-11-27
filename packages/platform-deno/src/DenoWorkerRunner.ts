@@ -2,8 +2,9 @@
  * This modules exposes primitives for multithread-communication using the standard {@linkcode MessagePort} API.
  * @module
  *
- * @since 1.0.0
+ * @since 0.1.1
  */
+
 import { WorkerRunner as Runner, WorkerError } from "@effect/platform";
 import {
   Context,
@@ -34,7 +35,7 @@ if (typeof self !== "undefined" && "onconnect" in self) {
 /**
  * Constructs a {@linkplain Runner.PlatformRunner | runner} from a {@linkcode MessagePort}.
  *
- * @since 1.0.0
+ * @since 0.1.1
  * @category constructors
  */
 export const make: (self: MessagePort | Window) => Runner.PlatformRunner = (
@@ -199,7 +200,7 @@ export const make: (self: MessagePort | Window) => Runner.PlatformRunner = (
 /**
  * A {@linkplain Layer.Layer | layer} that provides a {@linkcode Runner.PlatformRunner | PlatformRunner} from {@linkcode self} to your app.
  *
- * @since 1.0.0
+ * @since 0.1.1
  * @category layers
  */
 export const layer: Layer.Layer<Runner.PlatformRunner> = Layer.sync(
@@ -210,7 +211,7 @@ export const layer: Layer.Layer<Runner.PlatformRunner> = Layer.sync(
 /**
  * A {@linkplain Layer.Layer | layer} that provides a {@linkcode Runner.PlatformRunner | PlatformRunner} from a {@linkcode MessagePort} to your app.
  *
- * @since 1.0.0
+ * @since 0.1.1
  * @category layers
  */
 export const layerMessagePort: (
