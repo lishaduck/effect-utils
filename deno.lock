@@ -1,22 +1,22 @@
 {
   "version": "4",
   "specifiers": {
-    "jsr:@std/assert@^1.0.8": "1.0.10",
+    "jsr:@std/assert@^1.0.10": "1.0.10",
     "jsr:@std/internal@^1.0.5": "1.0.5",
     "npm:@biomejs/biome@^1.9.4": "1.9.4",
     "npm:@effect/platform-browser@0.51": "0.51.0_@effect+platform@0.72.0__effect@3.12.0_effect@3.12.0",
     "npm:@effect/platform-node-shared@0.22": "0.22.0_@effect+platform@0.72.0__effect@3.12.0_effect@3.12.0",
     "npm:@effect/platform-node@0.68": "0.68.0_@effect+platform@0.72.0__effect@3.12.0_effect@3.12.0",
     "npm:@effect/platform@0.72": "0.72.0_effect@3.12.0",
-    "npm:@effect/vitest@~0.13.16": "0.13.19_effect@3.12.0_vitest@2.1.8__@types+node@22.7.3__@vitest+ui@2.1.8___vitest@2.1.8___@types+node@22.7.3__vite@5.4.11___@types+node@22.7.3_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8___@types+node@22.7.3___@vitest+ui@2.1.8___vite@5.4.11____@types+node@22.7.3__@types+node@22.7.3",
-    "npm:@jsr/std__fs@^1.0.6": "1.0.8",
+    "npm:@effect/vitest@0.16": "0.16.0_effect@3.12.0_vitest@2.1.8__@types+node@22.7.3__@vitest+ui@2.1.8___vitest@2.1.8___@types+node@22.7.3__vite@5.4.11___@types+node@22.7.3_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8___@types+node@22.7.3___@vitest+ui@2.1.8___vite@5.4.11____@types+node@22.7.3__@types+node@22.7.3",
+    "npm:@jsr/std__fs@^1.0.8": "1.0.8",
     "npm:@jsr/std__path@^1.0.8": "1.0.8",
     "npm:@types/node@<22.7.4": "22.7.3",
-    "npm:@vitest/coverage-v8@^2.1.5": "2.1.8_vitest@2.1.8__@types+node@22.7.3__@vitest+ui@2.1.8___vitest@2.1.8___@types+node@22.7.3__vite@5.4.11___@types+node@22.7.3_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8___@types+node@22.7.3___@vitest+ui@2.1.8___vite@5.4.11____@types+node@22.7.3__@types+node@22.7.3",
-    "npm:@vitest/ui@^2.1.5": "2.1.8_vitest@2.1.8__@types+node@22.7.3__@vitest+ui@2.1.8__vite@5.4.11___@types+node@22.7.3_@types+node@22.7.3",
-    "npm:@vitest/web-worker@^2.1.5": "2.1.8_vitest@2.1.8__@types+node@22.7.3__@vitest+ui@2.1.8___vitest@2.1.8___@types+node@22.7.3__vite@5.4.11___@types+node@22.7.3_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8___@types+node@22.7.3___@vitest+ui@2.1.8___vite@5.4.11____@types+node@22.7.3__@types+node@22.7.3",
+    "npm:@vitest/coverage-v8@^2.1.8": "2.1.8_vitest@2.1.8__@types+node@22.7.3__@vitest+ui@2.1.8___vitest@2.1.8___@types+node@22.7.3__vite@5.4.11___@types+node@22.7.3_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8___@types+node@22.7.3___@vitest+ui@2.1.8___vite@5.4.11____@types+node@22.7.3__@types+node@22.7.3",
+    "npm:@vitest/ui@^2.1.8": "2.1.8_vitest@2.1.8__@types+node@22.7.3__@vitest+ui@2.1.8__vite@5.4.11___@types+node@22.7.3_@types+node@22.7.3",
+    "npm:@vitest/web-worker@^2.1.8": "2.1.8_vitest@2.1.8__@types+node@22.7.3__@vitest+ui@2.1.8___vitest@2.1.8___@types+node@22.7.3__vite@5.4.11___@types+node@22.7.3_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8___@types+node@22.7.3___@vitest+ui@2.1.8___vite@5.4.11____@types+node@22.7.3__@types+node@22.7.3",
     "npm:effect@^3.12.0": "3.12.0",
-    "npm:vitest@^2.1.5": "2.1.8_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8__@types+node@22.7.3_vite@5.4.11__@types+node@22.7.3"
+    "npm:vitest@^2.1.8": "2.1.8_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8__@types+node@22.7.3_vite@5.4.11__@types+node@22.7.3"
   },
   "jsr": {
     "@std/assert@1.0.10": {
@@ -132,11 +132,11 @@
         "multipasta"
       ]
     },
-    "@effect/vitest@0.13.19_effect@3.12.0_vitest@2.1.8__@types+node@22.7.3__@vitest+ui@2.1.8___vitest@2.1.8___@types+node@22.7.3__vite@5.4.11___@types+node@22.7.3_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8___@types+node@22.7.3___@vitest+ui@2.1.8___vite@5.4.11____@types+node@22.7.3__@types+node@22.7.3": {
-      "integrity": "sha512-5Tixz44IuH+TgXk2WJFEXhdz2IlhrUfxdSagzqKr7qVERZceYvCYka2W+JCgf8pgajNX91fu24vjB0YjTFKNOQ==",
+    "@effect/vitest@0.16.0_effect@3.12.0_vitest@2.1.8__@types+node@22.7.3__@vitest+ui@2.1.8___vitest@2.1.8___@types+node@22.7.3__vite@5.4.11___@types+node@22.7.3_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8___@types+node@22.7.3___@vitest+ui@2.1.8___vite@5.4.11____@types+node@22.7.3__@types+node@22.7.3": {
+      "integrity": "sha512-caUXVs8Xsf07XUHRu1pOsHDiww7rE556+0PYZHIg+X6oL6gA9k2+d8ZFmutaW9hJoSQuy+vKyYAFM9/1rVSSAQ==",
       "dependencies": [
         "effect",
-        "vitest@2.1.8_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8__@types+node@22.7.3_vite@5.4.11__@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8___@types+node@22.7.3___@vitest+ui@2.1.8___vite@5.4.11____@types+node@22.7.3__@types+node@22.7.3"
+        "vitest@2.1.8_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8___@types+node@22.7.3___@vitest+ui@2.1.8___vite@5.4.11____@types+node@22.7.3__@types+node@22.7.3_vite@5.4.11__@types+node@22.7.3"
       ]
     },
     "@esbuild/aix-ppc64@0.21.5": {
@@ -488,19 +488,6 @@
         "tinyglobby",
         "tinyrainbow",
         "vitest@2.1.8_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8___@types+node@22.7.3___@vitest+ui@2.1.8___vite@5.4.11____@types+node@22.7.3__@types+node@22.7.3_vite@5.4.11__@types+node@22.7.3"
-      ]
-    },
-    "@vitest/ui@2.1.8_vitest@2.1.8__@types+node@22.7.3__@vitest+ui@2.1.8__vite@5.4.11___@types+node@22.7.3_@types+node@22.7.3_vitest@2.1.8__@types+node@22.7.3__@vitest+ui@2.1.8___vitest@2.1.8___@types+node@22.7.3__vite@5.4.11___@types+node@22.7.3__@vitest+ui@2.1.8___vitest@2.1.8____@types+node@22.7.3____@vitest+ui@2.1.8____vite@5.4.11_____@types+node@22.7.3___@types+node@22.7.3": {
-      "integrity": "sha512-5zPJ1fs0ixSVSs5+5V2XJjXLmNzjugHRyV11RqxYVR+oMcogZ9qTuSfKW+OcTV0JeFNznI83BNylzH6SSNJ1+w==",
-      "dependencies": [
-        "@vitest/utils",
-        "fflate",
-        "flatted",
-        "pathe",
-        "sirv",
-        "tinyglobby",
-        "tinyrainbow",
-        "vitest@2.1.8_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8__@types+node@22.7.3_vite@5.4.11__@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8___@types+node@22.7.3___@vitest+ui@2.1.8___vite@5.4.11____@types+node@22.7.3__@types+node@22.7.3"
       ]
     },
     "@vitest/utils@2.1.8": {
@@ -961,8 +948,8 @@
     "tinybench@2.9.0": {
       "integrity": "sha512-0+DUvqWMValLmha6lr4kD8iAMK1HzV0/aKnCtWb9v9641TnP/MFb7Pc2bxoxQjTXAErryXVgUOfv2YqNllqGeg=="
     },
-    "tinyexec@0.3.2": {
-      "integrity": "sha512-KQQR9yN7R5+OSwaK0XQoj22pwHoTlgYqmUscPYoknOoWCWfj/5/ABTMRi69FrKU5ffPVh5QcFikpWJI/P1ocHA=="
+    "tinyexec@0.3.1": {
+      "integrity": "sha512-WiCJLEECkO18gwqIp6+hJg0//p23HXp4S+gGtAKu3mI2F2/sXC4FvHvXvB0zJVVaTPhx1/tOwdbRsa1sOBIKqQ=="
     },
     "tinyglobby@0.2.10_picomatch@4.0.2": {
       "integrity": "sha512-Zc+8eJlFMvgatPZTl6A9L/yht8QqdmUNtURHaKZLmKBE12hNPSrqNkUp2cs3M/UKmNVVAMFQYSjYIVHDjW5zew==",
@@ -1042,33 +1029,6 @@
         "why-is-node-running"
       ]
     },
-    "vitest@2.1.8_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8__@types+node@22.7.3_vite@5.4.11__@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8___@types+node@22.7.3___@vitest+ui@2.1.8___vite@5.4.11____@types+node@22.7.3__@types+node@22.7.3": {
-      "integrity": "sha512-1vBKTZskHw/aosXqQUlVWWlGUxSJR8YtiyZDJAFeW2kPAeX6S3Sool0mjspO+kXLuxVWlEDDowBAeqeAQefqLQ==",
-      "dependencies": [
-        "@types/node",
-        "@vitest/expect",
-        "@vitest/mocker",
-        "@vitest/pretty-format",
-        "@vitest/runner",
-        "@vitest/snapshot",
-        "@vitest/spy",
-        "@vitest/ui@2.1.8_vitest@2.1.8__@types+node@22.7.3__@vitest+ui@2.1.8__vite@5.4.11___@types+node@22.7.3_@types+node@22.7.3_vitest@2.1.8__@types+node@22.7.3__@vitest+ui@2.1.8___vitest@2.1.8___@types+node@22.7.3__vite@5.4.11___@types+node@22.7.3__@vitest+ui@2.1.8___vitest@2.1.8____@types+node@22.7.3____@vitest+ui@2.1.8____vite@5.4.11_____@types+node@22.7.3___@types+node@22.7.3",
-        "@vitest/utils",
-        "chai",
-        "debug",
-        "expect-type",
-        "magic-string",
-        "pathe",
-        "std-env",
-        "tinybench",
-        "tinyexec",
-        "tinypool",
-        "tinyrainbow",
-        "vite",
-        "vite-node",
-        "why-is-node-running"
-      ]
-    },
     "vitest@2.1.8_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8___@types+node@22.7.3___@vitest+ui@2.1.8___vite@5.4.11____@types+node@22.7.3__@types+node@22.7.3_vite@5.4.11__@types+node@22.7.3": {
       "integrity": "sha512-1vBKTZskHw/aosXqQUlVWWlGUxSJR8YtiyZDJAFeW2kPAeX6S3Sool0mjspO+kXLuxVWlEDDowBAeqeAQefqLQ==",
       "dependencies": [
@@ -1131,14 +1091,14 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@std/assert@^1.0.8",
+      "jsr:@std/assert@^1.0.10",
       "npm:@biomejs/biome@^1.9.4",
-      "npm:@effect/vitest@~0.13.16",
-      "npm:@vitest/coverage-v8@^2.1.5",
-      "npm:@vitest/ui@^2.1.5",
-      "npm:@vitest/web-worker@^2.1.5",
+      "npm:@effect/vitest@0.16",
+      "npm:@vitest/coverage-v8@^2.1.8",
+      "npm:@vitest/ui@^2.1.8",
+      "npm:@vitest/web-worker@^2.1.8",
       "npm:effect@^3.12.0",
-      "npm:vitest@^2.1.5"
+      "npm:vitest@^2.1.8"
     ],
     "members": {
       "packages/platform-deno": {
@@ -1148,7 +1108,7 @@
             "npm:@effect/platform-node-shared@0.22",
             "npm:@effect/platform-node@0.68",
             "npm:@effect/platform@0.72",
-            "npm:@jsr/std__fs@^1.0.6",
+            "npm:@jsr/std__fs@^1.0.8",
             "npm:@jsr/std__path@^1.0.8",
             "npm:@types/node@<22.7.4",
             "npm:effect@^3.12.0"
