@@ -13,21 +13,7 @@ import {
   User,
   type WorkerMessage,
 } from "./fixtures/schema.ts";
-
-/**
- * A partial polyfill of `importMetaResolve`.
- *
- * A function that returns resolved specifier as if it would be imported using `import(specifier)`.
- *
- * ```ts
- * console.log(importMetaResolve("./foo.js"));
- * // file:///dev/foo.js
- * ```
- * @param specifier - A relative path specifier.
- * @returns A `file://` path.
- */
-const importMetaResolve = (specifier: string): string =>
-  new URL(specifier, import.meta.url).toString();
+import { resolve } from "./helpers/resolve.ts";
 
 describe.sequential("Worker", () => {
   it.scoped("executes streams", ({ expect }) =>
@@ -40,7 +26,7 @@ describe.sequential("Worker", () => {
     }).pipe(
       Effect.provide(
         DenoWorker.layer(
-          () => new Worker(importMetaResolve("./fixtures/worker.ts")),
+          () => new Worker(resolve("./fixtures/worker.ts", import.meta.url)),
         ),
       ),
     ),
@@ -60,7 +46,10 @@ describe.sequential("Worker", () => {
     }).pipe(
       Effect.provide(
         DenoWorker.layer(
-          () => new Worker(importMetaResolve("./fixtures/serializedWorker.ts")),
+          () =>
+            new Worker(
+              resolve("./fixtures/serializedWorker.ts", import.meta.url),
+            ),
         ),
       ),
     ),
@@ -90,13 +79,16 @@ describe.sequential("Worker", () => {
     }).pipe(
       Effect.provide(
         DenoWorker.layer(
-          () => new Worker(importMetaResolve("./fixtures/serializedWorker.ts")),
+          () =>
+            new Worker(
+              resolve("./fixtures/serializedWorker.ts", import.meta.url),
+            ),
         ),
       ),
     ),
   );
 
-  it.scoped("tracing", ({ expect }) =>
+  it.scopedLive("tracing", ({ expect }) =>
     Effect.gen(function* () {
       const parentSpan = yield* Effect.currentSpan;
       const pool = yield* EffectWorker.makePoolSerialized({
@@ -116,7 +108,10 @@ describe.sequential("Worker", () => {
       Effect.withSpan("test"),
       Effect.provide(
         DenoWorker.layer(
-          () => new Worker(importMetaResolve("./fixtures/serializedWorker.ts")),
+          () =>
+            new Worker(
+              resolve("./fixtures/serializedWorker.ts", import.meta.url),
+            ),
         ),
       ),
     ),
@@ -126,7 +121,7 @@ describe.sequential("Worker", () => {
   //   it("send error", () =>
   //     Effect.gen(function* () {
   //       const pool = yield* EffectWorker.makePool<number, never, number>({
-  //         spawn: () => new Worker(importMetaResolve("./fixtures/worker.ts")),
+  //         spawn: () => new Worker(resolve("./fixtures/worker.ts", import.meta.url)),
   //         transfers(_message) {
   //           return [new Uint8Array([1, 2, 3])];
   //         },
@@ -160,7 +155,9 @@ describe.sequential("Worker", () => {
         Effect.provide(
           DenoWorker.layer(
             () =>
-              new Worker(importMetaResolve("./fixtures/serializedWorker.ts")),
+              new Worker(
+                resolve("./fixtures/serializedWorker.ts", import.meta.url),
+              ),
           ),
         ),
       ),
