@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "exports": {
     ".": "./src/mod.ts",
+    "./DenoCommandExecutor": "./src/DenoCommandExecutor.ts",
     "./DenoContext": "./src/DenoContext.ts",
     "./DenoFileSystem": "./src/DenoFileSystem.ts",
     "./DenoKeyValueStore": "./src/DenoKeyValueStore.ts",
