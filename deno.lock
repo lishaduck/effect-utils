@@ -2,16 +2,17 @@
   "version": "4",
   "specifiers": {
     "jsr:@std/assert@^1.0.10": "1.0.10",
+    "jsr:@std/fs@^1.0.8": "1.0.8",
     "jsr:@std/internal@^1.0.5": "1.0.5",
+    "jsr:@std/path@^1.0.8": "1.0.8",
     "npm:@biomejs/biome@^1.9.4": "1.9.4",
+    "npm:@deno/vite-plugin@^1.0.2": "1.0.2_vite@5.4.11__@types+node@22.7.3_@types+node@22.7.3",
     "npm:@effect/platform-browser@0.51": "0.51.0_@effect+platform@0.72.0__effect@3.12.0_effect@3.12.0",
     "npm:@effect/platform-node-shared@0.22": "0.22.0_@effect+platform@0.72.0__effect@3.12.0_effect@3.12.0",
     "npm:@effect/platform-node@0.68": "0.68.0_@effect+platform@0.72.0__effect@3.12.0_effect@3.12.0",
     "npm:@effect/platform@0.72": "0.72.0_effect@3.12.0",
     "npm:@effect/vitest@0.16": "0.16.0_effect@3.12.0_vitest@2.1.8__@types+node@22.7.3__@vitest+ui@2.1.8___vitest@2.1.8___@types+node@22.7.3__vite@5.4.11___@types+node@22.7.3_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8___@types+node@22.7.3___@vitest+ui@2.1.8___vite@5.4.11____@types+node@22.7.3__@types+node@22.7.3",
-    "npm:@jsr/std__fs@^1.0.8": "1.0.8",
-    "npm:@jsr/std__path@^1.0.8": "1.0.8",
-    "npm:@types/node@<22.7.4": "22.7.3",
+    "npm:@types/node@22.7.3": "22.7.3",
     "npm:@vitest/coverage-v8@^2.1.8": "2.1.8_vitest@2.1.8__@types+node@22.7.3__@vitest+ui@2.1.8___vitest@2.1.8___@types+node@22.7.3__vite@5.4.11___@types+node@22.7.3_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8___@types+node@22.7.3___@vitest+ui@2.1.8___vite@5.4.11____@types+node@22.7.3__@types+node@22.7.3",
     "npm:@vitest/ui@^2.1.8": "2.1.8_vitest@2.1.8__@types+node@22.7.3__@vitest+ui@2.1.8__vite@5.4.11___@types+node@22.7.3_@types+node@22.7.3",
     "npm:@vitest/web-worker@^2.1.8": "2.1.8_vitest@2.1.8__@types+node@22.7.3__@vitest+ui@2.1.8___vitest@2.1.8___@types+node@22.7.3__vite@5.4.11___@types+node@22.7.3_@types+node@22.7.3_@vitest+ui@2.1.8__vitest@2.1.8___@types+node@22.7.3___@vitest+ui@2.1.8___vite@5.4.11____@types+node@22.7.3__@types+node@22.7.3",
@@ -25,8 +26,17 @@
         "jsr:@std/internal"
       ]
     },
+    "@std/fs@1.0.8": {
+      "integrity": "161c721b6f9400b8100a851b6f4061431c538b204bb76c501d02c508995cffe0",
+      "dependencies": [
+        "jsr:@std/path"
+      ]
+    },
     "@std/internal@1.0.5": {
       "integrity": "54a546004f769c1ac9e025abd15a76b6671ddc9687e2313b67376125650dc7ba"
+    },
+    "@std/path@1.0.8": {
+      "integrity": "548fa456bb6a04d3c1a1e7477986b6cffbce95102d0bb447c67c4ee70e0364be"
     }
   },
   "npm": {
@@ -95,6 +105,12 @@
     },
     "@biomejs/cli-win32-x64@1.9.4": {
       "integrity": "sha512-8Y5wMhVIPaWe6jw2H+KlEm4wP/f7EW3810ZLmDlrEEy5KvBsb9ECEfu/kMWD484ijfQ8+nIi0giMgu9g1UAuuA=="
+    },
+    "@deno/vite-plugin@1.0.2_vite@5.4.11__@types+node@22.7.3_@types+node@22.7.3": {
+      "integrity": "sha512-ZaC5W1yCb1xdRURU5qHFHrxZABr1tC68tS73/YhXUUbe9nuytCV4CG/dpLxMkxS64Fs3YwcqEz2k1eAqE9W5SQ==",
+      "dependencies": [
+        "vite"
+      ]
     },
     "@effect/platform-browser@0.51.0_@effect+platform@0.72.0__effect@3.12.0_effect@3.12.0": {
       "integrity": "sha512-E5VTL4zm6gAM2ASTlUqmL/oJ3Xs1mJ2o/VhNuB+f2lA+W7jYUzK0K2kp1wQwJcj26tZjdy888+bSXIfc+WjPsQ==",
@@ -245,15 +261,6 @@
         "@jridgewell/resolve-uri",
         "@jridgewell/sourcemap-codec"
       ]
-    },
-    "@jsr/std__fs@1.0.8": {
-      "integrity": "sha512-w2BNxizm0BLiNNYRM+flC1Y8r6aqaol1supvGvDtAPMI7x5CBBoHejpsVfWT9if+VGLNAMMq5g4syzWumd4JQg==",
-      "dependencies": [
-        "@jsr/std__path"
-      ]
-    },
-    "@jsr/std__path@1.0.8": {
-      "integrity": "sha512-eNBGlh/8ZVkMxtFH4bwIzlAeKoHYk5in4wrBZhi20zMdOiuX4QozP4+19mIXBT2lzHDjhuVLyECbhFeR304iDg=="
     },
     "@parcel/watcher-android-arm64@2.5.0": {
       "integrity": "sha512-qlX4eS28bUcQCdribHkg/herLe+0A9RyYC+mm2PXpncit8z5b3nSqGVzMNR3CmtAOgRutiZ02eIJJgP/b1iEFQ=="
@@ -948,8 +955,8 @@
     "tinybench@2.9.0": {
       "integrity": "sha512-0+DUvqWMValLmha6lr4kD8iAMK1HzV0/aKnCtWb9v9641TnP/MFb7Pc2bxoxQjTXAErryXVgUOfv2YqNllqGeg=="
     },
-    "tinyexec@0.3.1": {
-      "integrity": "sha512-WiCJLEECkO18gwqIp6+hJg0//p23HXp4S+gGtAKu3mI2F2/sXC4FvHvXvB0zJVVaTPhx1/tOwdbRsa1sOBIKqQ=="
+    "tinyexec@0.3.2": {
+      "integrity": "sha512-KQQR9yN7R5+OSwaK0XQoj22pwHoTlgYqmUscPYoknOoWCWfj/5/ABTMRi69FrKU5ffPVh5QcFikpWJI/P1ocHA=="
     },
     "tinyglobby@0.2.10_picomatch@4.0.2": {
       "integrity": "sha512-Zc+8eJlFMvgatPZTl6A9L/yht8QqdmUNtURHaKZLmKBE12hNPSrqNkUp2cs3M/UKmNVVAMFQYSjYIVHDjW5zew==",
@@ -1093,6 +1100,7 @@
     "dependencies": [
       "jsr:@std/assert@^1.0.10",
       "npm:@biomejs/biome@^1.9.4",
+      "npm:@deno/vite-plugin@^1.0.2",
       "npm:@effect/vitest@0.16",
       "npm:@vitest/coverage-v8@^2.1.8",
       "npm:@vitest/ui@^2.1.8",
@@ -1102,18 +1110,16 @@
     ],
     "members": {
       "packages/platform-deno": {
-        "packageJson": {
-          "dependencies": [
-            "npm:@effect/platform-browser@0.51",
-            "npm:@effect/platform-node-shared@0.22",
-            "npm:@effect/platform-node@0.68",
-            "npm:@effect/platform@0.72",
-            "npm:@jsr/std__fs@^1.0.8",
-            "npm:@jsr/std__path@^1.0.8",
-            "npm:@types/node@<22.7.4",
-            "npm:effect@^3.12.0"
-          ]
-        }
+        "dependencies": [
+          "jsr:@std/fs@^1.0.8",
+          "jsr:@std/path@^1.0.8",
+          "npm:@effect/platform-browser@0.51",
+          "npm:@effect/platform-node-shared@0.22",
+          "npm:@effect/platform-node@0.68",
+          "npm:@effect/platform@0.72",
+          "npm:@types/node@22.7.3",
+          "npm:effect@^3.12.0"
+        ]
       }
     }
   }
