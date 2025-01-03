@@ -2,6 +2,14 @@
  * This module exposes an {@link https://effect.website/docs/runtime/ | Effect Runtime} powered by Deno.
  * @module
  *
+ * @example
+ * ```ts
+ * import { DenoContext, DenoRuntime } from "@lishaduck/effect-platform-deno";
+ * import { Console, Effect } from "effect";
+ *
+ * DenoRuntime.runMain(Console.log("Hello, World").pipe(Effect.provide(DenoContext.layer)));
+ * ```
+ *
  * @since 0.1.0
  */
 

@@ -3,6 +3,7 @@
   "nodeModulesDir": "manual",
   "license": "MIT",
   "workspace": ["./packages/*"],
+  "unstable": ["kv"],
   "imports": {
     "@biomejs/biome": "npm:@biomejs/biome@^1.9.4",
     "@effect/vitest": "npm:@effect/vitest@^0.13.16",
