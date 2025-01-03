@@ -2,7 +2,7 @@
   "name": "@lishaduck/effect-platform-deno",
   "type": "module",
   "dependencies": {
-    "@std/fs": "npm:@jsr/std__fs@^1.0.6",
+    "@std/fs": "npm:@jsr/std__fs@^1.0.8",
     "@std/path": "npm:@jsr/std__path@^1.0.8"
   },
   "devDependencies": {
