@@ -6,12 +6,12 @@
   "unstable": ["kv"],
   "imports": {
     "@biomejs/biome": "npm:@biomejs/biome@^1.9.4",
-    "@effect/vitest": "npm:@effect/vitest@^0.16.0",
-    "@std/assert": "jsr:@std/assert@^1.0.10",
+    "@effect/vitest": "npm:@effect/vitest@^0.17.3",
+    "@std/assert": "jsr:@std/assert@^1.0.11",
     "@vitest/coverage-v8": "npm:@vitest/coverage-v8@^2.1.8",
     "@vitest/ui": "npm:@vitest/ui@^2.1.8",
     "@vitest/web-worker": "npm:@vitest/web-worker@^2.1.8",
-    "effect": "npm:effect@^3.12.0",
+    "effect": "npm:effect@^3.12.7",
     "vitest": "npm:vitest@^2.1.8"
   },
   "tasks": {
