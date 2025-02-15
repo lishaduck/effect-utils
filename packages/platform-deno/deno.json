@@ -17,8 +17,6 @@
     "@effect/platform-browser": "npm:@effect/platform-browser@^0.56.1",
     "@effect/platform-node": "npm:@effect/platform-node@^0.73.1",
     "@effect/platform-node-shared": "npm:@effect/platform-node-shared@^0.27.1",
-    "@std/fs": "jsr:@std/fs@^1.0.13",
-    "@std/path": "jsr:@std/path@^1.0.8",
     "effect": "npm:effect@^3.13.1"
   }
 }
