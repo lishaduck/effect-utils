@@ -291,6 +291,16 @@ const nodeFstatFactory = (
   );
 const fstat = nodeFstatFactory("fstat");
 
+const nodeSyncFactory = (
+  method: string,
+): ((fd: number) => Effect.Effect<void, PlatformError>) =>
+  effectify(
+    NFS.fsync,
+    handleErrnoException(moduleName, method),
+    handleBadArgument(method),
+  );
+const nodeSync = nodeSyncFactory("sync");
+
 const nodeWriteFactory = (
   method: string,
 ): ((
@@ -326,6 +336,10 @@ const makeFile = (() => {
 
     get stat(): Effect.Effect<FileSystem.File.Info, PlatformError> {
       return Effect.map(fstat(this.fd), makeNodeFileInfo);
+    }
+
+    get sync(): Effect.Effect<void, PlatformError> {
+      return nodeSync(this.fd);
     }
 
     seek(

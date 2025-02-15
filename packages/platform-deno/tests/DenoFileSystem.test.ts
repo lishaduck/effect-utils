@@ -72,7 +72,8 @@ it.layer(DenoFileSystem.layer)("FileSystem", (it) => {
     }),
   );
 
-  it.scoped(
+  // The Node-compat layer for `NFS.read` is buggy.
+  it.scoped.fails(
     "should track the cursor position when reading",
     ({ expect }) =>
       Effect.gen(function* () {
@@ -121,7 +122,6 @@ it.layer(DenoFileSystem.layer)("FileSystem", (it) => {
         );
         expect(text).toBe("ipsum");
       }),
-    { fails: true }, // The Node-compat layer for `NFS.read` is buggy.
   );
 
   it.scoped("should track the cursor position when writing", ({ expect }) =>
@@ -150,7 +150,8 @@ it.layer(DenoFileSystem.layer)("FileSystem", (it) => {
     }),
   );
 
-  it.scoped(
+  // The Node-compat layer for `NFS.read` is buggy.
+  it.scoped.fails(
     "should maintain a read cursor in append mode",
     ({ expect }) =>
       Effect.gen(function* () {
@@ -183,7 +184,6 @@ it.layer(DenoFileSystem.layer)("FileSystem", (it) => {
         );
         expect(text).toBe("barbaz");
       }),
-    { fails: true }, // The Node-compat layer for `NFS.read` is buggy.
   );
 
   it.scoped(
