@@ -41,5 +41,7 @@ export const layerSessionStorage: Layer.Layer<KeyValueStore.KeyValueStore> =
  * @since 0.1.2
  * @category layer
  */
-export const layerKv: Layer.Layer<KeyValueStore.KeyValueStore, never, never> =
-  Layer.effect(KeyValueStore.KeyValueStore, makeKvStore());
+export const layerKv: Layer.Layer<KeyValueStore.KeyValueStore> = Layer.effect(
+  KeyValueStore.KeyValueStore,
+  makeKvStore(),
+);

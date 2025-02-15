@@ -42,4 +42,4 @@ const WorkerLive = Runner.layerSerialized(WorkerMessage, {
   RunnerInterrupt: (): Effect.Effect<never> => Effect.interrupt,
 }).pipe(Layer.provide(DenoRunner.layer));
 
-Effect.runFork(Layer.launch(WorkerLive));
+Effect.runFork(Runner.launch(WorkerLive));

@@ -1,4 +1,3 @@
-import "@vitest/web-worker";
 import { Worker as EffectWorker, type WorkerError } from "@effect/platform";
 import { describe, it } from "@effect/vitest";
 import { Chunk, Effect, Exit, Option, type Scope, Stream, pipe } from "effect";
@@ -26,7 +25,10 @@ describe.sequential("Worker", () => {
     }).pipe(
       Effect.provide(
         DenoWorker.layer(
-          () => new Worker(resolve("./fixtures/worker.ts", import.meta.url)),
+          () =>
+            new Worker(resolve("./fixtures/worker.ts", import.meta.url), {
+              type: "module",
+            }),
         ),
       ),
     ),
@@ -49,6 +51,7 @@ describe.sequential("Worker", () => {
           () =>
             new Worker(
               resolve("./fixtures/serializedWorker.ts", import.meta.url),
+              { type: "module" },
             ),
         ),
       ),
@@ -82,6 +85,7 @@ describe.sequential("Worker", () => {
           () =>
             new Worker(
               resolve("./fixtures/serializedWorker.ts", import.meta.url),
+              { type: "module" },
             ),
         ),
       ),
@@ -111,28 +115,31 @@ describe.sequential("Worker", () => {
           () =>
             new Worker(
               resolve("./fixtures/serializedWorker.ts", import.meta.url),
+              { type: "module" },
             ),
         ),
       ),
     ),
   );
 
-  // TODO: vitest/web-worker doesn't support postMessage throwing errors
-  //   it("send error", () =>
+  // it.scoped(
+  //   "send error",
+
+  //   () =>
   //     Effect.gen(function* () {
   //       const pool = yield* EffectWorker.makePool<number, never, number>({
-  //         spawn: () => new Worker(resolve("./fixtures/worker.ts", import.meta.url)),
-  //         transfers(_message) {
+  //         spawn: () =>
+  //           new Worker(resolve("./fixtures/worker.ts", import.meta.url), {
+  //             type: "module",
+  //           }),
+  //         transfers() {
   //           return [new Uint8Array([1, 2, 3])];
   //         },
   //         size: 1,
   //       });
   //       return yield* pipe(pool.execute(99), Stream.runCollect, Effect.flip);
-  //     }).pipe(
-  //       Effect.scoped,
-  //       Effect.provide(EffectWorker.layerManager),
-  //       Effect.runPromise,
-  //     ));
+  //     }).pipe(Effect.provide(DenoWorker.layerManager())),
+  // );
 
   it.scoped(
     "interrupt runner",
@@ -157,6 +164,7 @@ describe.sequential("Worker", () => {
             () =>
               new Worker(
                 resolve("./fixtures/serializedWorker.ts", import.meta.url),
+                { type: "module" },
               ),
           ),
         ),

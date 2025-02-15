@@ -7,12 +7,12 @@
 
 import { WorkerRunner as Runner, WorkerError } from "@effect/platform";
 import {
+  Cause,
   Context,
   Deferred,
   Effect,
   ExecutionStrategy,
   Exit,
-  FiberId,
   FiberSet,
   Layer,
   Runtime,
@@ -38,15 +38,14 @@ if (typeof self !== "undefined" && "onconnect" in self) {
  * @since 0.1.1
  * @category constructors
  */
-export const make: (self: MessagePort | Window) => Runner.PlatformRunner = (
-  self: MessagePort | Window,
+export const make: (self: MessagePort) => Runner.PlatformRunner = (
+  self: MessagePort,
 ) =>
   Runner.PlatformRunner.of({
     [Runner.PlatformRunnerTypeId]: Runner.PlatformRunnerTypeId,
-    start<I, O>(): Effect.Effect<
-      Runner.BackingRunner<I, O>,
-      WorkerError.WorkerError
-    > {
+    start<I, O>(
+      closeLatch: Deferred.Deferred<void, WorkerError.WorkerError>,
+    ): Effect.Effect<Runner.BackingRunner<I, O>, WorkerError.WorkerError> {
       return Effect.sync(() => {
         let currentPortId = 0;
 
@@ -60,137 +59,135 @@ export const make: (self: MessagePort | Window) => Runner.PlatformRunner = (
           transfer?: readonly unknown[],
         ): Effect.Effect<void> =>
           Effect.sync(() => {
-            (ports.get(portId)?.[0] ?? (self as MessagePort)).postMessage(
-              [1, message],
-              {
-                transfer: transfer as Transferable[],
-              },
-            );
+            (ports.get(portId)?.[0] ?? self).postMessage([1, message], {
+              transfer: transfer as Transferable[],
+            });
           });
 
-        const run = <A, E, R>(
+        const run = Effect.fnUntraced(function* <A, E, R>(
           handler: (portId: number, message: I) => Effect.Effect<A, E, R>,
-        ): Effect.Effect<
-          never,
-          WorkerError.WorkerError | E,
-          Exclude<R, Scope.Scope>
-        > =>
-          Effect.uninterruptibleMask((restore) =>
-            Effect.gen(function* () {
-              const scope = yield* Effect.scope;
-              const runtime = (yield* Effect.runtime<R | Scope.Scope>()).pipe(
-                Runtime.updateContext(Context.omit(Scope.Scope)),
-              ) as Runtime.Runtime<R>;
-              const fiberSet = yield* FiberSet.make<
-                unknown,
-                WorkerError.WorkerError | E
-              >();
-              const runFork = Runtime.runFork(runtime);
-
-              function onMessage(portId: number) {
-                // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: It's fine. I guess.
-                return (event: MessageEvent): void => {
-                  const message = (event as MessageEvent)
-                    .data as Runner.BackingRunner.Message<I>;
-                  if (message[0] === 0) {
-                    FiberSet.unsafeAdd(
-                      fiberSet,
-                      runFork(restore(handler(portId, message[1]))),
-                    );
-                  } else {
-                    const port = ports.get(portId);
-                    if (port) {
-                      Effect.runFork(Scope.close(port[1], Exit.void));
-                    }
-                    ports.delete(portId);
-                    if (ports.size === 0) {
-                      Deferred.unsafeDone(
-                        fiberSet.deferred,
-                        Exit.interrupt(FiberId.none),
-                      );
-                    }
-                  }
-                };
-              }
-              function onMessageError(error: MessageEvent): void {
-                Deferred.unsafeDone(
-                  fiberSet.deferred,
-                  new WorkerError.WorkerError({
-                    reason: "decode",
-                    cause: error.data,
-                  }),
-                );
-              }
-              function onError(error: MessageEvent): void {
-                Deferred.unsafeDone(
-                  fiberSet.deferred,
-                  new WorkerError.WorkerError({
-                    reason: "unknown",
-                    cause: error.data,
-                  }),
-                );
-              }
-              function handlePort(port: MessagePort): void {
-                const fiber = Scope.fork(
-                  scope,
-                  ExecutionStrategy.sequential,
-                ).pipe(
-                  Effect.flatMap((scope) => {
-                    const portId = currentPortId++;
-                    ports.set(portId, [port, scope]);
-                    const onMsg = onMessage(portId);
-                    port.addEventListener("message", onMsg);
-                    port.addEventListener("messageerror", onMessageError);
-                    if ("start" in port) {
-                      port.start();
-                    }
-                    port.postMessage([0]);
-                    return Scope.addFinalizer(
-                      scope,
-                      Effect.sync(() => {
-                        port.removeEventListener("message", onMsg);
-                        port.removeEventListener("messageerror", onError);
-                        port.close();
-                      }),
-                    );
-                  }),
-                  runFork,
-                );
-                FiberSet.unsafeAdd(fiberSet, fiber);
-              }
-              self.addEventListener("error", onError as EventListener);
-              let prevOnConnect: unknown | undefined;
-              if ("onconnect" in self) {
-                prevOnConnect = self.onconnect;
-                self.onconnect = (event: MessageEvent): void => {
-                  // biome-ignore lint/style/noNonNullAssertion: I don't want to break this fragile code.
-                  const port = (event as MessageEvent).ports[0]!;
-                  handlePort(port);
-                };
-                for (const port of cachedPorts) {
-                  handlePort(port);
-                }
-                cachedPorts.clear();
-                yield* Scope.addFinalizer(
-                  scope,
-                  Effect.sync(() => self.close()),
-                );
-              } else {
-                handlePort(self as MessagePort);
-              }
-              yield* Scope.addFinalizer(
-                scope,
-                Effect.sync(() => {
-                  self.removeEventListener("error", onError as EventListener);
-                  if ("onconnect" in self) {
-                    self.onconnect = prevOnConnect;
-                  }
-                }),
+        ) {
+          const scope = yield* Effect.scope;
+          const runtime = (yield* Effect.interruptible(
+            Effect.runtime<R | Scope.Scope>(),
+          )).pipe(
+            Runtime.updateContext(Context.omit(Scope.Scope)),
+          ) as Runtime.Runtime<R>;
+          const fiberSet = yield* FiberSet.make<
+            unknown,
+            WorkerError.WorkerError | E
+          >();
+          const runFork = Runtime.runFork(runtime);
+          function onExit(exit: Exit.Exit<unknown, E>): void {
+            if (exit._tag === "Failure") {
+              Deferred.unsafeDone(
+                closeLatch,
+                Exit.die(Cause.squash(exit.cause)),
               );
+            }
+          }
 
-              return (yield* restore(FiberSet.join(fiberSet))) as never;
-            }).pipe(Effect.scoped),
+          function onMessage(portId: number): (event: MessageEvent) => void {
+            // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: It's fine. I guess.
+            return (event: MessageEvent): void => {
+              const message = (event as MessageEvent)
+                .data as Runner.BackingRunner.Message<I>;
+              if (message[0] === 0) {
+                const fiber = runFork(handler(portId, message[1]));
+                fiber.addObserver(onExit);
+                FiberSet.unsafeAdd(fiberSet, fiber);
+              } else {
+                const port = ports.get(portId);
+
+                if (!port) {
+                  return;
+                }
+
+                if (ports.size === 1) {
+                  // let the last port close with the outer scope
+                  Deferred.unsafeDone(closeLatch, Exit.void);
+
+                  return;
+                }
+                ports.delete(portId);
+                Effect.runFork(Scope.close(port[1], Exit.void));
+              }
+            };
+          }
+          function onMessageError(error: MessageEvent): void {
+            Deferred.unsafeDone(
+              closeLatch,
+              new WorkerError.WorkerError({
+                reason: "decode",
+                cause: error.data,
+              }),
+            );
+          }
+          function onError(error: MessageEvent): void {
+            Deferred.unsafeDone(
+              closeLatch,
+              new WorkerError.WorkerError({
+                reason: "unknown",
+                cause: error.data,
+              }),
+            );
+          }
+          function handlePort(port: MessagePort): void {
+            const fiber = Scope.fork(scope, ExecutionStrategy.sequential).pipe(
+              Effect.flatMap((scope) => {
+                const portId = currentPortId++;
+                ports.set(portId, [port, scope]);
+                const onMsg = onMessage(portId);
+                port.addEventListener("message", onMsg);
+                port.addEventListener("messageerror", onMessageError);
+                if ("start" in port) {
+                  port.start();
+                }
+                port.postMessage([0]);
+                return Scope.addFinalizer(
+                  scope,
+                  Effect.sync(() => {
+                    port.removeEventListener("message", onMsg);
+                    port.removeEventListener("messageerror", onError);
+                    port.close();
+                  }),
+                );
+              }),
+              runFork,
+            );
+            fiber.addObserver(onExit);
+            FiberSet.unsafeAdd(fiberSet, fiber);
+          }
+          self.addEventListener("messageerror", onError);
+          let prevOnConnect: unknown | undefined;
+          if ("onconnect" in self) {
+            prevOnConnect = self.onconnect;
+            self.onconnect = (event: MessageEvent): void => {
+              // biome-ignore lint/style/noNonNullAssertion: We know it's there. Maybe.
+              const port = event.ports[0]!;
+              handlePort(port);
+            };
+            for (const port of cachedPorts) {
+              handlePort(port);
+            }
+            cachedPorts.clear();
+            yield* Scope.addFinalizer(
+              scope,
+              Effect.sync(() => self.close()),
+            );
+          } else {
+            handlePort(self);
+          }
+          yield* Scope.addFinalizer(
+            scope,
+            Effect.sync(() => {
+              self.removeEventListener("messageerror", onError);
+              if ("onconnect" in self) {
+                self.onconnect = prevOnConnect;
+              }
+            }),
           );
+        });
 
         return { run, send };
       });
@@ -205,16 +202,27 @@ export const make: (self: MessagePort | Window) => Runner.PlatformRunner = (
  */
 export const layer: Layer.Layer<Runner.PlatformRunner> = Layer.sync(
   Runner.PlatformRunner,
-  () => make(self),
+  // globalThis in a Web Worker is a MessagePort.
+  () => make(globalThis as unknown as MessagePort),
 );
 
 /**
  * A {@linkplain Layer.Layer | layer} that provides a {@linkcode Runner.PlatformRunner | PlatformRunner} from a {@linkcode MessagePort} to your app.
+ * Note that if you try to pass in {@linkcode window}, you may need a type assertion.
  *
  * @since 0.1.1
  * @category layers
  */
 export const layerMessagePort: (
-  port: MessagePort | Window,
-) => Layer.Layer<Runner.PlatformRunner> = (port: MessagePort | Window) =>
+  port: MessagePort,
+) => Layer.Layer<Runner.PlatformRunner> = (port: MessagePort) =>
   Layer.succeed(Runner.PlatformRunner, make(port));
+
+// biome-ignore lint/performance/noBarrelFile: We need it for compatibility.
+export {
+  /**
+   * @since 0.1.2
+   * @category re-exports
+   */
+  launch,
+} from "@effect/platform/WorkerRunner";
