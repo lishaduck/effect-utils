@@ -26,11 +26,11 @@
  * @since 0.1.0
  */
 
+import * as DenoPath from "jsr:@std/path@^1.0.8";
+import * as DenoPathPosix from "jsr:@std/path@^1.0.8/posix";
+import * as DenoPathWin from "jsr:@std/path@^1.0.8/windows";
 import { BadArgument } from "@effect/platform/Error";
 import { Path, TypeId } from "@effect/platform/Path";
-import * as DenoPath from "@std/path";
-import * as DenoPathPosix from "@std/path/posix";
-import * as DenoPathWin from "@std/path/windows";
 import { Effect, Layer } from "effect";
 
 const fromFileUrl = (url: URL): Effect.Effect<string, BadArgument> =>
