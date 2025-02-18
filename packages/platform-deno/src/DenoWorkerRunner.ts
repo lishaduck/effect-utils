@@ -5,6 +5,8 @@
  * @since 0.1.1
  */
 
+/// <reference lib="deno.worker" />
+
 import { WorkerRunner as Runner, WorkerError } from "@effect/platform";
 import {
   Cause,
@@ -33,14 +35,19 @@ if (typeof self !== "undefined" && "onconnect" in self) {
 }
 
 /**
+ * Just a simple alias for {@linkcode globalThis} and {@linkcode MessagePort}.
+ *
+ * @internal
+ */
+export type Self = typeof globalThis | MessagePort;
+
+/**
  * Constructs a {@linkplain Runner.PlatformRunner | runner} from a {@linkcode MessagePort}.
  *
  * @since 0.1.1
  * @category constructors
  */
-export const make: (self: MessagePort) => Runner.PlatformRunner = (
-  self: MessagePort,
-) =>
+export const make: (self: Self) => Runner.PlatformRunner = (self: Self) =>
   Runner.PlatformRunner.of({
     [Runner.PlatformRunnerTypeId]: Runner.PlatformRunnerTypeId,
     start<I, O>(
@@ -49,10 +56,7 @@ export const make: (self: MessagePort) => Runner.PlatformRunner = (
       return Effect.sync(() => {
         let currentPortId = 0;
 
-        const ports = new Map<
-          number,
-          readonly [MessagePort, Scope.CloseableScope]
-        >();
+        const ports = new Map<number, readonly [Self, Scope.CloseableScope]>();
         const send = (
           portId: number,
           message: O,
@@ -87,9 +91,9 @@ export const make: (self: MessagePort) => Runner.PlatformRunner = (
             }
           }
 
-          function onMessage(portId: number): (event: MessageEvent) => void {
+          function onMessage(portId: number): (event: Event) => void {
             // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: It's fine. I guess.
-            return (event: MessageEvent): void => {
+            return (event: Event): void => {
               const message = (event as MessageEvent)
                 .data as Runner.BackingRunner.Message<I>;
               if (message[0] === 0) {
@@ -114,25 +118,25 @@ export const make: (self: MessagePort) => Runner.PlatformRunner = (
               }
             };
           }
-          function onMessageError(error: MessageEvent): void {
+          function onMessageError(error: Event): void {
             Deferred.unsafeDone(
               closeLatch,
               new WorkerError.WorkerError({
                 reason: "decode",
-                cause: error.data,
+                cause: (error as MessageEvent).data,
               }),
             );
           }
-          function onError(error: MessageEvent): void {
+          function onError(error: Event): void {
             Deferred.unsafeDone(
               closeLatch,
               new WorkerError.WorkerError({
                 reason: "unknown",
-                cause: error.data,
+                cause: (error as MessageEvent).data,
               }),
             );
           }
-          function handlePort(port: MessagePort): void {
+          function handlePort(port: Self): void {
             const fiber = Scope.fork(scope, ExecutionStrategy.sequential).pipe(
               Effect.flatMap((scope) => {
                 const portId = currentPortId++;

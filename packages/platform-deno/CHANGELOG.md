@@ -18,12 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Bumped dependency lower bounds ([#10], [#16] \[thanks to [@pixeleet]\], [#20], [#21]).
 - Only support passing in `MessagePort`s to `layerMessagePort` ([#21]).
-  This means that you’ll need to add `webworker.lib.d.ts` to your TypeScript `compilerOptions`
+  This means that you’ll need to add `deno.worker` to your TypeScript `compilerOptions`
   if you use `DenoWorkerRunner`.
   ```json
   {
     "compilerOptions": {
-      "lib": ["webworker"]
+      "lib": ["deno.worker"]
     }
   }
   ```
