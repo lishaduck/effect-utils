@@ -14,5 +14,14 @@ export default defineConfig({
         tests: true,
       },
     },
+    workspace: [
+      {
+        extends: true,
+        test: {
+          name: "platform-deno",
+          include: ["packages/platform-deno/tests/*.test.ts"],
+        },
+      },
+    ],
   },
 });
