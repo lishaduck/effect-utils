@@ -5,8 +5,6 @@
  * @since 0.1.1
  */
 
-/// <reference lib="deno.worker" />
-
 import { WorkerRunner as Runner, WorkerError } from "@effect/platform";
 import {
   Cause,

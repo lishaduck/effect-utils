@@ -60,3 +60,5 @@ jobs:
         run: deno task lint:doc
       - name: 🧪 Run tests
         run: deno task test
+      - name: 🗞️ Dry-run publishing
+        run: deno publish --dry-run
