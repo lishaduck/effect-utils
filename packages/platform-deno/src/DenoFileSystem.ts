@@ -7,8 +7,6 @@
 
 // biome-ignore lint/correctness/noNodejsModules: Using Node.js compat for fid operations.
 import * as NFS from "node:fs";
-import * as SFS from "jsr:@std/fs@^1.0.13";
-import * as Path from "jsr:@std/path@^1.0.8";
 import { FileSystem } from "@effect/platform";
 import { effectify } from "@effect/platform/Effectify";
 import {
@@ -16,6 +14,8 @@ import {
   type PlatformError,
   SystemError,
 } from "@effect/platform/Error";
+import * as SFS from "@std/fs";
+import * as Path from "@std/path";
 import {
   Chunk,
   type Context,
