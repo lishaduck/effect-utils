@@ -31,7 +31,8 @@
     "noUncheckedIndexedAccess": true,
     "noPropertyAccessFromIndexSignature": true,
     "useUnknownInCatchVariables": true,
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "lib": ["deno.ns", "deno.window", "deno.unstable", "deno.worker"]
   },
   "lint": {
     "exclude": ["no-explicit-any"]
