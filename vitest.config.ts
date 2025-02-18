@@ -1,8 +1,6 @@
-import deno from "@deno/vite-plugin";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
-  plugins: [deno()],
   test: {
     coverage: {
       // enabled: true,
@@ -14,14 +12,6 @@ export default defineConfig({
         tests: true,
       },
     },
-    workspace: [
-      {
-        extends: true,
-        test: {
-          name: "platform-deno",
-          include: ["packages/platform-deno/tests/*.test.ts"],
-        },
-      },
-    ],
+    workspace: ["packages/*/"],
   },
 });
