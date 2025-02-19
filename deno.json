@@ -9,7 +9,7 @@
     "@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.4",
     "@effect/vitest": "npm:@effect/vitest@^0.19.0",
     "@std/assert": "jsr:@std/assert@^1.0.11",
-    "@vitest/coverage-v8": "npm:@vitest/coverage-v8@^3.0.6",
+    "@vitest/coverage-istanbul": "npm:@vitest/coverage-istanbul@^3.0.6",
     "@vitest/ui": "npm:@vitest/ui@^3.0.6",
     "effect": "npm:effect@^3.13.2",
     "vitest": "npm:vitest@^3.0.6"
